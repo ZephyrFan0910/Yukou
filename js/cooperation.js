@@ -35,29 +35,40 @@ coopBtns.forEach(btn => {
 });
 
 // ========== 通用下拉菜单交互（支持多个 .dropdown）==========
+// ========== 三创赛电商标准：下拉菜单丝滑防抖交互 ==========
 document.querySelectorAll('.dropdown').forEach(dropdown => {
-    const btn = dropdown.querySelector('.dropbtn');
-    if (!btn) return;
-
-    btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        // 关闭其他所有下拉菜单
-        document.querySelectorAll('.dropdown.open').forEach(d => {
-            if (d !== dropdown) d.classList.remove('open');
-        });
-        dropdown.classList.toggle('open');
-    });
-
-    // 点击页面其他区域关闭所有下拉菜单
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
-    });
-
-    // 阻止下拉内容点击冒泡，防止误关闭
     const content = dropdown.querySelector('.dropdown-content');
-    if (content) {
-        content.addEventListener('click', e => e.stopPropagation());
-    }
+    if (!content) return;
+
+    let hideTimeoutId;
+
+    // 鼠标移入：立即显示
+    dropdown.addEventListener('mouseenter', function() {
+        clearTimeout(hideTimeoutId);
+
+        // 第一步：让元素存在于页面流中
+        content.style.display = 'block';
+
+        // 第二步：使用一个小延迟触发重绘，从而激活 CSS 的 active 动画
+        setTimeout(() => {
+            content.classList.add('active');
+        }, 10);
+    });
+
+    // 鼠标移出：防抖延迟隐藏
+    dropdown.addEventListener('mouseleave', function() {
+        hideTimeoutId = setTimeout(() => {
+            // 第一步：移除 active 类，触发 CSS 下沉变透明动画
+            content.classList.remove('active');
+
+            // 第二步：等动画播完（300ms），彻底隐藏元素避免阻挡鼠标
+            setTimeout(() => {
+                if (!content.classList.contains('active')) {
+                    content.style.display = 'none';
+                }
+            }, 300);
+        }, 150); // 150ms 的防抖时间
+    });
 });
 
 // ========== 资金透明公示弹窗 ==========
