@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>畲乡玉扣纸非遗技艺数字馆 - 文创商城</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/shop.css">
+</head>
+<body>
+
+<!-- 导航栏（与首页完全一致） -->
+<div class="nav">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="../images/logo/logo.png" alt="Logo" style="height: 64px; width: auto;">
+            <span>客家非遗数字电商平台</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="../index.html"><i class="fas fa-home"></i> 首页</a>
+            <a href="virtual.html"><i class="fas fa-vr-cardboard"></i> 虚拟体验</a>
+
+            <!-- 二级菜单：非遗档案库 -->
+            <div class="dropdown" id="archiveDropdown">
+                <a href="javascript:void(0);" class="dropbtn">
+                    <i class="fas fa-archive"></i> 非遗档案库 <i class="fas fa-chevron-down arrow-icon"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="yukou_paper.html"><i class="fas fa-scroll"></i> 畲乡玉扣纸</a>
+                    <a href="hakka.html"><i class="fas fa-leaf"></i> 其他客家非遗</a>
+                </div>
+            </div>
+
+            <!-- 二级菜单：研习中心（原云端教育） -->
+            <div class="dropdown" id="studyDropdown">
+                <a href="javascript:void(0);" class="dropbtn">
+                    <i class="fas fa-cloud-upload-alt"></i> 研习中心 <i class="fas fa-chevron-down arrow-icon"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="courses.html"><i class="fas fa-graduation-cap"></i> 在线课程</a>
+                    <a href="study.html"><i class="fas fa-tree"></i> 研学实践</a>
+                </div>
+            </div>
+
+            <a href="shop.html" class="active"><i class="fas fa-shopping-cart"></i> 文创商城</a>
+            <a href="ip.html"><i class="fas fa-lightbulb"></i> IP孵化中心</a>
+            <a href="cooperation.html"><i class="fas fa-handshake"></i> 合作入驻</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> 关于我们</a>
+        </div>
+        <div class="menu-icon" id="menuIcon">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</div>
+
+<!-- 静态 Banner -->
+<div class="banner-container">
+    <div class="banner-bg" style="background-image: url('../images/shop/banner/shop.png');"></div>
+
+</div>
+
+<!-- 主体内容区 -->
+<div class="container">
+    <!-- 1. 文创产品列表（网格展示） -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title">🛍️ 精选文创产品</h2>
+            <div class="title-decoration"></div>
+        </div>
+        <p class="section-subtitle">基于玉扣纸“经久不蛀、温润如玉”特性，结合畲族文化元素设计</p>
+        <div class="product-grid">
+            <!-- 产品卡片 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/koukou_notebook.png" alt="扣扣笔记本">
+                </div>
+                <div class="product-info">
+                    <h3>”扣扣“形象笔记本</h3>
+                    <p class="product-desc">封面采用国风「扣扣」IP 形象与传统凤凰纹设计，内页选用加厚非遗玉扣纸，书写不洇墨，兼具日常实用与文化收藏价值。</p>
+                    <div class="product-price">¥48.00</div>
+                    <div class="product-sold">已售 1,203</div>
+                    <button class="cart-btn" data-id="6"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/koukou_hang.png" alt="扣扣挂件">
+                </div>
+                <div class="product-info">
+                    <h3>“扣扣”形象挂件</h3>
+                    <p class="product-desc">以非遗玉扣纸为基底，雕刻「扣扣」IP 形象与传统凤凰纹样，搭配流苏挂饰，兼具便携装饰性与非遗文化传播价值。</p>
+                    <div class="product-price">¥48.00</div>
+                    <div class="product-sold">已售 1,203</div>
+                    <button class="cart-btn" data-id="6"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-notebook.jpg" alt="畲族纹样玉扣纸笔记本">
+                </div>
+                <div class="product-info">
+                    <h3>畲族纹样玉扣纸笔记本</h3>
+                    <p class="product-desc">封面印畲族传统“凤凰纹”，内页纯手工玉扣纸，细腻不洇墨。</p>
+                    <div class="product-price">¥68.00</div>
+                    <div class="product-sold">已售 2,341</div>
+                    <button class="cart-btn" data-id="1"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-lamp.jpg" alt="竹纸透光艺术灯具">
+                </div>
+                <div class="product-info">
+                    <h3>竹纸透光艺术灯具</h3>
+                    <p class="product-desc">灯罩采用多层玉扣纸叠加，激光雕刻畲族图腾，灯光柔和温暖。</p>
+                    <div class="product-price">¥198.00</div>
+                    <div class="product-sold">已售 987</div>
+                    <button class="cart-btn" data-id="2"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-diy.jpg" alt="古法造纸DIY材料包">
+                </div>
+                <div class="product-info">
+                    <h3>古法造纸DIY材料包</h3>
+                    <p class="product-desc">迷你竹帘、纸浆、染料、工具套装+教学手册，零基础可操作。</p>
+                    <div class="product-price">¥128.00</div>
+                    <div class="product-sold">已售 1,256</div>
+                    <button class="cart-btn" data-id="3"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-scroll.jpg" alt="玉扣纸书法卷轴">
+                </div>
+                <div class="product-info">
+                    <h3>玉扣纸书法卷轴</h3>
+                    <p class="product-desc">1.2米/1.8米长卷，搭配实木轴头，与省级书协联名款。</p>
+                    <div class="product-price">¥158.00</div>
+                    <div class="product-sold">已售 532</div>
+                    <button class="cart-btn" data-id="4"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-album.jpg" alt="非遗主题纪念相册">
+                </div>
+                <div class="product-info">
+                    <h3>非遗主题纪念相册</h3>
+                    <p class="product-desc">内页玉扣纸，封面竹编工艺，耐老化无化学异味。</p>
+                    <div class="product-price">¥88.00</div>
+                    <div class="product-sold">已售 764</div>
+                    <button class="cart-btn" data-id="5"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+            <!-- 产品卡片 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="../images/shop/creative-puzzle.jpg" alt="纸艺拼图">
+                </div>
+                <div class="product-info">
+                    <h3>畲乡造纸场景拼图</h3>
+                    <p class="product-desc">100片/300片，加厚玉扣纸材质，兼具娱乐与文化传播。</p>
+                    <div class="product-price">¥48.00</div>
+                    <div class="product-sold">已售 1,203</div>
+                    <button class="cart-btn" data-id="6"><i class="fas fa-cart-plus"></i> 加入购物车</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. 个性化定制服务 -->
+    <div class="section">
+        <div class="section-header">
+            <h2 class="section-title">✍️ 个性化定制服务</h2>
+            <div class="title-decoration"></div>
+        </div>
+        <p class="section-subtitle">基于玉扣纸的专属定制解决方案，满足多样化需求</p>
+        <div class="custom-card">
+            <div class="custom-icon"><i class="fas fa-pen-fancy"></i></div>
+            <div class="custom-content">
+                <h3>定制范围</h3>
+                <ul>
+                    <li><i class="fas fa-book"></i> 族谱印刷 · 企业文化手册</li>
+                    <li><i class="fas fa-heart"></i> 婚礼请柬 · 艺术作品装裱</li>
+                    <li><i class="fas fa-university"></i> 高校毕业纪念册 · 博物馆藏书</li>
+                </ul>
+                <div class="custom-case">
+                    <p><strong>合作案例：</strong>为宁化县博物馆定制《畲族简史》玉扣纸线装本、为三明学院定制毕业纪念册</p>
+                </div>
+                <div class="custom-process">
+                    <span><i class="fas fa-comments"></i> 需求沟通</span>
+                    <span><i class="fas fa-drafting-compass"></i> 设计方案</span>
+                    <span><i class="fas fa-flask"></i> 样品制作</span>
+                    <span><i class="fas fa-check-circle"></i> 确认生产</span>
+                    <span><i class="fas fa-truck"></i> 交付验收</span>
+                </div>
+                <button class="custom-btn" id="customBtn"><i class="fas fa-envelope"></i> 咨询定制服务</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部信息栏 -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h4>畲乡玉扣纸数字非遗平台</h4>
+            <p>保护传承 · 文化自信 · 数字赋能</p>
+            <p>我们致力于用数字技术守护非遗文化，让传统文化在新时代焕发新的生命力。</p>
+        </div>
+        <div class="footer-col">
+            <h4>平台服务</h4>
+            <a href="#">帮助中心</a>
+            <a href="about.html">合作入驻</a>
+            <a href="about.html">联系我们</a>
+            <a href="#" id="fundTransparency">资金使用透明公示</a>
+        </div>
+        <div class="footer-col">
+            <h4>联系方式</h4>
+            <p><i class="fas fa-phone-alt"></i> 电话：0598-1234567</p>
+            <p><i class="fas fa-envelope"></i> 邮箱：contact@yukuzhi.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 地址：福建省三明市宁化县治平畲族乡</p>
+            <div class="social-icons">
+                <i class="fab fa-weixin"></i>
+                <i class="fab fa-weibo"></i>
+                <i class="fab fa-bilibili"></i>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p class="image-source">图片来源：非遗实地纸都治平馆拍摄、AI生成、百度图库</p>
+        <p>© 2025 畲乡玉扣纸非遗技艺数字馆 | 公益与商业并行，所有收益反哺非遗保护</p>
+    </div>
+</footer>
+
+<script src="../js/shop.js"></script>
+</body>
+</html>

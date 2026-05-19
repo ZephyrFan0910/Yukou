@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>畲乡玉扣纸制作体验</title>
+    <style>
+        :root {
+            --bg-main: #e4d5b7;
+            --panel-bg: #fff9e6;
+            --border-color: #8b7355;
+            --btn-bg: #8b7355;
+            --btn-hover: #6f5a3f;
+            --text-danger: #8b2323;
+            --progress-bg: #ddd;
+            --progress-fill: var(--border-color);
+            --font-family: "楷体", KaiTi, serif;
+        }
+
+        body {
+            background: var(--bg-main);
+            font-family: var(--font-family);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--border-color);
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .step {
+            background: var(--panel-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: opacity 0.4s ease;
+        }
+
+        .step.active-step {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 第一步：竹林背景 */
+        .bamboo-bg {
+            height: 300px;
+            background-image: url('1.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        /* 不同生长阶段的青檀树样式 */
+        .bamboo-item {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        /* 阶段1：幼苗期 */
+        .bamboo-item.stage-1 {
+            width: 60px;
+            height: 90px;
+            background-image: url('tree-stage1.jpg'); /* 幼苗图片 */
+        }
+
+        /* 阶段2：生长期 */
+        .bamboo-item.stage-2 {
+            width: 70px;
+            height: 110px;
+            background-image: url('tree-stage2.jpg'); /* 生长期图片 */
+        }
+
+        /* 阶段3：成熟期 */
+        .bamboo-item.stage-3 {
+            width: 80px;
+            height: 130px;
+            background-image: url('tree-stage3.jpg'); /* 成熟期图片 */
+        }
+
+        /* 阶段4：盛产期 */
+        .bamboo-item.stage-4 {
+            width: 90px;
+            height: 150px;
+            background-image: url('tree-stage4.jpg'); /* 盛产期图片 */
+        }
+
+        /* 阶段5：优质期 */
+        .bamboo-item.stage-5 {
+            width: 100px;
+            height: 170px;
+            background-image: url('tree-stage5.jpg'); /* 优质期图片 */
+        }
+
+        .bamboo-item:hover {
+            transform: scale(1.15);
+        }
+
+        /* 采集后的状态区分 */
+        .bamboo-item.collected {
+            opacity: 0.3;
+            filter: grayscale(0.8);
+            pointer-events: none;
+        }
+
+        .stage-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.9);
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--border-color);
+            white-space: nowrap;
+        }
+
+        .collect-tip {
+            position: absolute;
+            color: var(--text-danger);
+            font-weight: bold;
+            font-size: 16px;
+            animation: floatUp 1s forwards;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-40px); }
+        }
+
+        .tool-btn {
+            background: var(--btn-bg);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .tool-btn:hover:not(:disabled) {
+            background: var(--btn-hover);
+        }
+
+        .tool-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        #paper-result {
+            width: 200px;
+            height: 150px;
+            margin: 20px auto;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            transform: rotate(-1deg);
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        #paper-result img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--progress-bg);
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--progress-fill);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .material-counter {
+            background: rgba(255,255,255,0.85);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--border-color);
+        }
+
+        .hint {
+            color: var(--text-danger);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .stage-intro {
+            background: rgba(139, 115, 85, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--border-color);
+        }
+    </style>
+</head>
+<body>
+<div class="game-container">
+    <h1>畲乡玉扣纸制作技艺传承</h1>
+
+    <!-- 步骤1：采集原料 -->
+    <div id="step1" class="step active-step">
+        <h2>第一步：采集原料（玉扣纸核心原料：青檀树皮）</h2>
+        <div class="stage-intro">
+            青檀树不同生长阶段：幼苗期 → 生长期 → 成熟期 → 盛产期 → 优质期（优质期树皮纤维最适合制作玉扣纸）
+        </div>
+        <div class="bamboo-bg" id="bamboo-area"></div>
+        <p class="material-counter">已采集：<span id="material-count">0</span>/5（需采集全部生长阶段的青檀树）</p>
+        <p class="hint">提示：点击不同阶段的青檀树收集原料，体验完整采集过程</p>
+    </div>
+
+    <!-- 步骤2：浸泡 -->
+    <div id="step2" class="step">
+        <h2>第二步：浸泡原料（需发酵7天）</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" id="soak-progress"></div>
+        </div>
+        <button id="soak-btn" class="tool-btn">开始浸泡</button>
+    </div>
+
+    <!-- 步骤3：抄纸 -->
+    <div id="step3" class="step">
+        <h2>第三步：抄纸成型</h2>
+        <div id="paper-mold" style="background: #b7d2e3; height: 200px; position: relative; border: 1px solid var(--border-color); border-radius: 6px;">
+            <div id="paper-layer" style="position: absolute; bottom: 0; width: 100%; height: 0; background: white; border-radius: 4px;"></div>
+        </div>
+        <button id="pour-btn" class="tool-btn" onmousedown="startPouring()" onmouseup="stopPouring()" ontouchstart="startPouring()" ontouchend="stopPouring()">
+            按住竹帘抄纸
+        </button>
+        <p class="hint">提示：按住时间决定纸张厚度（建议 60%~100%）</p>
+    </div>
+
+    <!-- 步骤4：成品 -->
+    <div id="step4" class="step">
+        <h2>成品展示</h2>
+        <div id="paper-result">
+            <img src="paper.jpg" alt="玉扣纸成品">
+        </div>
+        <p id="quality-text" style="text-align: center; font-weight: bold;"></p>
+        <button onclick="resetGame()" class="tool-btn">重新体验</button>
+    </div>
+</div>
+
+<script>
+    // 全局状态
+    let currentStep = 1;
+    let materialCount = 0;
+    let paperThickness = 0;
+    let pouringActive = false;
+
+    // 青檀树生长阶段配置
+    const treeStages = [
+        {
+            stage: 1,
+            name: "幼苗期",
+            top: '180px',
+            left: '100px',
+            desc: "幼苗期青檀树，纤维细嫩"
+        },
+        {
+            stage: 2,
+            name: "生长期",
+            top: '150px',
+            left: '250px',
+            desc: "生长期青檀树，纤维发育中"
+        },
+        {
+            stage: 3,
+            name: "成熟期",
+            top: '130px',
+            left: '400px',
+            desc: "成熟期青檀树，纤维饱满"
+        },
+        {
+            stage: 4,
+            name: "盛产期",
+            top: '110px',
+            left: '550px',
+            desc: "盛产期青檀树，纤维优质"
+        },
+        {
+            stage: 5,
+            name: "优质期",
+            top: '90px',
+            left: '700px',
+            desc: "优质期青檀树，纤维最佳"
+        }
+    ];
+
+    // 初始化青檀树
+    window.addEventListener('load', () => {
+        const area = document.getElementById('bamboo-area');
+        treeStages.forEach(stage => {
+            const tree = document.createElement('div');
+            tree.className = `bamboo-item stage-${stage.stage}`;
+            tree.style.top = stage.top;
+            tree.style.left = stage.left;
+            tree.dataset.stage = stage.stage;
+            tree.dataset.collected = 'false';
+
+            // 添加阶段标签
+            const label = document.createElement('div');
+            label.className = 'stage-label';
+            label.textContent = stage.name;
+            tree.appendChild(label);
+
+            // 点击采集事件
+            tree.addEventListener('click', () => collectMaterial(tree, stage));
+            area.appendChild(tree);
+        });
+
+        // 绑定浸泡按钮
+        document.getElementById('soak-btn').addEventListener('click', startSoaking);
+    });
+
+    function collectMaterial(element, stage) {
+        if (element.dataset.collected === 'true') return;
+
+        materialCount++;
+        element.dataset.collected = 'true';
+        element.classList.add('collected');
+
+        document.getElementById('material-count').textContent = materialCount;
+
+        // 显示采集提示（包含阶段信息）
+        const tip = document.createElement('div');
+        tip.className = 'collect-tip';
+        tip.textContent = `✓ 已采集${stage.name}！`;
+        tip.style.left = element.style.left;
+        tip.style.top = parseFloat(element.style.top) - 30 + 'px';
+        document.getElementById('bamboo-area').appendChild(tip);
+
+        // 自动进入下一步（采集完5个阶段）
+        if (materialCount >= 5) {
+            setTimeout(() => goToStep(2), 1000);
+        }
+    }
+
+    function startSoaking() {
+        const btn = document.getElementById('soak-btn');
+        btn.disabled = true;
+        btn.textContent = '浸泡中...';
+
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += 5;
+            document.getElementById('soak-progress').style.width = `${Math.min(progress, 100)}%`;
+            if (progress >= 100) {
+                clearInterval(interval);
+                setTimeout(() => goToStep(3), 500);
+            }
+        }, 150); // 加快浸泡速度：原300ms改为150ms
+    }
+
+    function startPouring() {
+        if (pouringActive) return;
+        pouringActive = true;
+        const layer = document.getElementById('paper-layer');
+        const interval = setInterval(() => {
+            if (paperThickness < 100) {
+                paperThickness += 1.5;
+                layer.style.height = `${Math.min(paperThickness, 100)}%`;
+            }
+        }, 50);
+        window.pourInterval = interval;
+    }
+
+    function stopPouring() {
+        if (!pouringActive) return;
+        pouringActive = false;
+        clearInterval(window.pourInterval);
+        setTimeout(() => goToStep(4), 1000);
+    }
+
+    function goToStep(step) {
+        document.getElementById(`step${currentStep}`).classList.remove('active-step');
+        currentStep = step;
+        document.getElementById(`step${currentStep}`).classList.add('active-step');
+
+        if (step === 4) {
+            showFinalResult();
+        }
+    }
+
+    function showFinalResult() {
+        let quality = "优质玉扣纸";
+        let color = "#228B22";
+
+        if (paperThickness < 60) {
+            quality = "纸张过薄（易破损）";
+            color = "#CD5C5C";
+        } else if (paperThickness > 100) {
+            quality = "纸张过厚（不符合玉扣纸标准）";
+            color = "#CD5C5C";
+        }
+
+        const text = document.getElementById("quality-text");
+        text.textContent = `成品质量：${quality}（厚度：${Math.round(paperThickness)}%）`;
+        text.style.color = color;
+    }
+
+    function resetGame() {
+        // 重置状态
+        currentStep = 1;
+        materialCount = 0;
+        paperThickness = 0;
+        pouringActive = false;
+
+        // 重置UI
+        document.querySelectorAll('.step').forEach((el, i) => {
+            el.classList.toggle('active-step', i === 0);
+        });
+        document.getElementById('material-count').textContent = '0';
+        document.getElementById('soak-progress').style.width = '0%';
+        document.getElementById('paper-layer').style.height = '0%';
+        document.getElementById('quality-text').textContent = '';
+
+        // 重置按钮
+        const soakBtn = document.getElementById('soak-btn');
+        soakBtn.disabled = false;
+        soakBtn.textContent = '开始浸泡';
+
+        // 重置青檀树
+        document.querySelectorAll('.bamboo-item').forEach(el => {
+            el.dataset.collected = 'false';
+            el.classList.remove('collected');
+        });
+
+        // 清除提示
+        document.querySelectorAll('.collect-tip').forEach(el => el.remove());
+    }
+</script>
+</body>
+</html>
