@@ -86,13 +86,13 @@
     </div>
 
     <!-- 2. VR/AR虚拟工坊 -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">🥽 VR/AR虚拟工坊</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🥽 VR/AR虚拟工坊</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">”化身匠人”沉浸式体验 · 还原清代纸寮场景</p>
-        <div class="vr-card" data-aos="fade-right" data-aos-delay="100">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”50”>”化身匠人”沉浸式体验 · 还原清代纸寮场景</p>
+        <div class=”vr-card” data-aos=”fade-right” data-aos-delay=”100”>
             <div class="vr-media" data-aos="zoom-in" data-aos-delay="200">
                 <img src="../images/virtual/arvr-workshop.jpg" alt="VR虚拟工坊">
                 <div class="vr-badge"><i class="fas fa-vr-cardboard"></i> VR/AR体验</div>

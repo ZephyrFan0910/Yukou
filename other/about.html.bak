@@ -75,24 +75,24 @@
         <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
             <p>畲乡玉扣纸是福建省三明市宁化县千年传统手工竹纸技艺，以<span class="highlight">“色泽如玉、细腻柔嫩、经久不蛀”</span>闻名，最早可追溯至北宋时期，2007年被列为<span class="highlight">福建省省级非物质文化遗产</span>。历史上，玉扣纸曾畅销东南亚，被选作《毛泽东选集》（线装本）印刷用纸，2024年更被牛津大学博德利图书馆用于古籍善本《明福河陈心斋刻本》重印，文化价值获国际认可。</p>
             <p>然而，这项技艺当前面临<span class="highlight">传承断层（仅10位传承人，平均年龄60岁）、工艺濒危、市场认知度低（公众认知度仅12.3%）</span>等困境。为破解难题，我们团队打造“畲乡玉扣纸非遗技艺数字馆”，旨在通过数字技术实现“活态传承与文化重生”。</p>
-            <div class="goal-list">
-                <div class="goal-item" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-save"></i>
+            <div class=”goal-list”>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”200”>
+                    <i class=”fas fa-save”></i>
                     <span>抢救性记录</span>
                     <p>系统化保存传承人技艺、历史文献、工艺细节</p>
                 </div>
-                <div class="goal-item" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-rocket"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”300”>
+                    <i class=”fas fa-rocket”></i>
                     <span>创新性传播</span>
                     <p>通过VR/AR、游戏、慕课等形式吸引年轻群体</p>
                 </div>
-                <div class="goal-item" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-seedling"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”400”>
+                    <i class=”fas fa-seedling”></i>
                     <span>可持续传承</span>
                     <p>建立”数字馆+线下工坊+研学”生态，培养新一代传承人</p>
                 </div>
-                <div class="goal-item" data-aos="zoom-in" data-aos-delay="500">
-                    <i class="fas fa-city"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”500”>
+                    <i class=”fas fa-city”></i>
                     <span>文化赋能乡村</span>
                     <p>助力宁化县”非遗+乡村振兴”战略，带动地方文化发展</p>
                 </div>

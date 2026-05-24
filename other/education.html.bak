@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>在线课程 · 传承人培养 | 畲乡玉扣纸非遗数字馆</title>
+    <title>畲乡玉扣纸非遗技艺数字馆 - 云端教育</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/courses.css">
-    <!-- AOS (Animate On Scroll) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/education.css">
+    <!-- AOS Animate On Scroll -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
-<!-- 导航栏 -->
+<!-- 导航栏（与首页完全一致） -->
 <div class="nav">
     <div class="nav-container">
         <div class="logo">
@@ -24,31 +24,11 @@
         <div class="nav-links" id="navLinks">
             <a href="../index.html"><i class="fas fa-home"></i> 首页</a>
             <a href="virtual.html"><i class="fas fa-vr-cardboard"></i> 虚拟体验</a>
-
-            <!-- 二级菜单：非遗档案库 -->
-            <div class="dropdown" id="archiveDropdown">
-                <a href="javascript:void(0);" class="dropbtn">
-                    <i class="fas fa-archive"></i> 非遗档案库 <i class="fas fa-chevron-down arrow-icon"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="yukou_paper.html"><i class="fas fa-scroll"></i> 畲乡玉扣纸</a>
-                    <a href="hakka.html"><i class="fas fa-leaf"></i> 其他客家非遗</a>
-                </div>
-            </div>
-
-            <!-- 二级菜单：研习中心 -->
-            <div class="dropdown" id="studyDropdown">
-                <a href="javascript:void(0);" class="dropbtn active-parent">
-                    <i class="fas fa-cloud-upload-alt"></i> 研习中心 <i class="fas fa-chevron-down arrow-icon"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="courses.html" class="active"><i class="fas fa-graduation-cap"></i> 在线课程</a>
-                    <a href="study.html"><i class="fas fa-tree"></i> 研学实践</a>
-                </div>
-            </div>
-
+            <a href="yukou_paper.html"><i class="fas fa-archive"></i> 非遗档案库</a>
+            <a href="education.html" class="active"><i class="fas fa-cloud-upload-alt"></i> 云端教育</a>
             <a href="shop.html"><i class="fas fa-shopping-cart"></i> 文创商城</a>
             <a href="ip.html"><i class="fas fa-lightbulb"></i> IP孵化中心</a>
+            <a href="hakka.html"><i class="fas fa-map-marked-alt"></i> 客家非遗</a>
             <a href="cooperation.html"><i class="fas fa-handshake"></i> 合作入驻</a>
             <a href="about.html"><i class="fas fa-info-circle"></i> 关于我们</a>
         </div>
@@ -58,16 +38,16 @@
     </div>
 </div>
 
-<!-- 静态 Banner（课程主题） -->
+<!-- 静态 Banner -->
 <div class="banner-container">
-    <div class="banner-bg" style="background-image: url('../images/education/courses/banner/courses.jpg');"></div>
-    <div class="banner-overlay" data-aos="fade-down" data-aos-delay="200">
-        <h1>在线课程 · 传承人培养</h1>
-        <p>从入门到专业，系统学习非遗技艺</p>
+    <div class="banner-bg" style="background-image: url('../images/education/banner/banner-education.jpg');"></div>
+    <div class="banner-text" data-aos="fade-down">
+        <h1>云端教育平台</h1>
+        <p>系统化教学 · 传承人直播 · 全民学非遗</p>
     </div>
 </div>
 
-<!-- 主体内容区：仅包含课程相关模块（慕课、直播工坊、传承者计划） -->
+<!-- 主体内容区 -->
 <div class="container">
     <!-- 1. 非遗慕课课程 -->
     <div class="section">
@@ -75,7 +55,7 @@
             <h2 class="section-title">📚 非遗慕课课程</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
         <div class="course-grid">
             <div class="course-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="course-icon"><i class="fas fa-book-open"></i></div>
@@ -131,8 +111,8 @@
             <h2 class="section-title">🎥 传承人直播工坊</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
-        <div class="live-card" data-aos="fade-right" data-aos-delay="200">
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
+        <div class="live-card" data-aos="fade-right">
             <div class="live-media">
                 <img src="../images/education/live-workshop.jpg" alt="直播工坊">
                 <div class="live-badge"><i class="fas fa-video"></i> 即将直播</div>
@@ -149,20 +129,20 @@
                 </div>
             </div>
         </div>
-        <div class="past-live" data-aos="fade-up" data-aos-delay="300">
+        <div class="past-live" data-aos="fade-up" data-aos-delay="100">
             <p><i class="fas fa-history"></i> 往期直播回顾：《竹料浸泡与纤维软化》 · 《焙纸温度与纸张质感关系》</p>
         </div>
     </div>
 
     <!-- 3. 非遗传承者计划 -->
     <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">🌱 非遗传承者计划</h2>
-            <div class="title-decoration"></div>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🌱 非遗传承者计划</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
-        <div class="plan-card" data-aos="zoom-in" data-aos-delay="200">
-            <div class="plan-stats" data-aos="flip-left" data-aos-delay="300">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”50”>培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
+        <div class=”plan-card” data-aos=”zoom-in”>
+            <div class="plan-stats">
                 <div class="stat-item">
                     <span class="stat-number">120+</span>
                     <span class="stat-label">课时学习</span>
@@ -176,7 +156,7 @@
                     <span class="stat-label">师徒带教</span>
                 </div>
             </div>
-            <div class="plan-details" data-aos="fade-left" data-aos-delay="400">
+            <div class="plan-details">
                 <p><i class="fas fa-handshake"></i> 合作机构：纸都治平馆、三明学院经济与管理学院</p>
                 <p><i class="fas fa-laptop-code"></i> 培养模式：“线上课程学习 + 线下工坊实践 + 传承人带教”三位一体</p>
                 <p><i class="fas fa-certificate"></i> 考核认证：完成120课时学习+30天实践，通过技艺考核可获《非遗传播者证书》</p>
@@ -184,6 +164,72 @@
             </div>
             <div class="plan-btn-wrapper">
                 <a href="#" class="plan-btn">立即报名 <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 线下研学服务（原 study.html 内容整合） -->
+    <div class="section">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">🏕️ 线下研学实践 · 行走的非遗课堂</h2>
+            <div class="title-decoration"></div>
+        </div>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">走进古法纸寮，亲手触摸千年技艺</p>
+
+        <!-- 研学路线 1日 / 3日 -->
+        <div class="study-routes">
+            <!-- 1日研学路线 -->
+            <div class="route-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="route-img">
+                    <img src="../images/education/route-1day.jpg" alt="1日研学路线">
+                </div>
+                <div class="route-content">
+                    <div class="route-header">
+                        <h3>“畲乡纸韵”1日研学路线</h3>
+                        <span class="route-badge">中小学推荐</span>
+                    </div>
+                    <div class="route-schedule">
+                        <div class="schedule-item"><span class="time">09:00-09:30</span> 开营仪式，介绍研学目标</div>
+                        <div class="schedule-item"><span class="time">09:30-10:30</span> 参观非遗展示馆，观察古代造纸工具</div>
+                        <div class="schedule-item"><span class="time">10:40-12:00</span> 传承人演示：抄纸、焙纸工序</div>
+                        <div class="schedule-item"><span class="time">14:00-15:30</span> 手工体验：制作专属玉扣纸作品</div>
+                        <div class="schedule-item"><span class="time">15:30-16:00</span> 颁发《非遗研学证书》，闭营分享</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 3日研学路线 -->
+            <div class="route-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="route-img">
+                    <img src="../images/education/route-3day.jpg" alt="3日研学路线">
+                </div>
+                <div class="route-content">
+                    <div class="route-header">
+                        <h3>“古法造纸深度研究”3日研学路线</h3>
+                        <span class="route-badge">高校/专业群体</span>
+                    </div>
+                    <div class="route-schedule">
+                        <div class="schedule-item"><span class="time">Day1 上午</span> 专家讲座：《玉扣纸工艺与文化价值》+ 清代纸厂遗址参观</div>
+                        <div class="schedule-item"><span class="time">Day1 下午</span> 竹料处理实践：砍竹-削青-浸塘</div>
+                        <div class="schedule-item"><span class="time">Day2 全天</span> 核心工艺学习：踏料-打浆-抄纸-焙纸</div>
+                        <div class="schedule-item"><span class="time">Day3 全天</span> 创新应用：文创设计+分组汇报成果</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 线下体验中心信息 -->
+        <div class="experience-center" data-aos="fade-left">
+            <div class="center-media">
+                <img src="../images/education/纸都治平馆.jpg" alt="畲乡玉扣纸非遗传承体验中心">
+            </div>
+            <div class="center-info">
+                <h3><i class="fas fa-map-marker-alt"></i> 畲乡玉扣纸非遗传承体验中心</h3>
+                <p>地址：福建省三明市宁化县治平畲族乡茜坑村（胡铖纸寮旁）</p>
+                <p>规模：占地面积1200㎡，含展示区、体验区、教学区、传承人工作室</p>
+                <p>设施：4K教学屏、抄纸体验工位20个、竹料处理实践区</p>
+                <p>开放时间：每周二至周日 09:00-17:00（周一闭馆，需提前3天预约）</p>
+                <p>师资：常驻省级传承人1名、市级传承人2名、研学导师5名</p>
+                <a href="#" class="reserve-btn"><i class="fas fa-calendar-check"></i> 预约体验</a>
             </div>
         </div>
     </div>
@@ -223,7 +269,7 @@
 </footer>
 
 <script src="../js/education.js"></script>
-<!-- AOS (Animate On Scroll) -->
+<!-- AOS Animate On Scroll -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
     AOS.init({

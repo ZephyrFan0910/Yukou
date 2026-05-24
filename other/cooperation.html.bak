@@ -67,13 +67,13 @@
 <!-- 主体内容区 -->
 <div class="container">
     <!-- 1. 平台简介 -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">📖 平台简介</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>📖 平台简介</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
-            <p>客家非遗数字电商平台致力于客家非遗文化的数字化保护与创新传播，提供<span class="highlight">”保护优先 · 文创反哺”</span>的可持续发展模式。平台现已入驻非遗传承人23位，数字化非遗项目12+，注册用户突破1.8万人。我们诚邀更多非遗传承人、文创机构、教育单位、文旅企业加入，共同打造非遗数字生态。</p>
+        <div class=”intro-card” data-aos=”fade-up” data-aos-delay=”100”>
+            <p>客家非遗数字电商平台致力于客家非遗文化的数字化保护与创新传播，提供<span class=”highlight”>”保护优先 · 文创反哺”</span>的可持续发展模式。平台现已入驻非遗传承人23位，数字化非遗项目12+，注册用户突破1.8万人。我们诚邀更多非遗传承人、文创机构、教育单位、文旅企业加入，共同打造非遗数字生态。</p>
         </div>
     </div>
 

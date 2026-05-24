@@ -67,12 +67,12 @@
 <!-- 主体内容区 -->
 <div class="container">
     <!-- 1. 文创产品列表（网格展示） -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">🛍️ 精选文创产品</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🛍️ 精选文创产品</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">基于玉扣纸”经久不蛀、温润如玉”特性，结合畲族文化元素设计</p>
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”100”>基于玉扣纸”经久不蛀、温润如玉”特性，结合畲族文化元素设计</p>
         <div class="product-grid">
             <!-- 产品卡片 7 -->
             <div class="product-card" data-aos="fade-up" data-aos-delay="0">

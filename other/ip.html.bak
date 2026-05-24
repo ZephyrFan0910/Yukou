@@ -67,17 +67,17 @@
 <!-- 主体内容区 -->
 <div class="container">
     <!-- 1. 核心IP形象展示 -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">🎭 核心IP形象 · 玉扣纸精灵</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🎭 核心IP形象 · 玉扣纸精灵</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">以玉扣纸为原型，融合畲族纹样，打造年轻化非遗IP</p>
-        <div class="ip-character">
-            <div class="character-image" data-aos="fade-right" data-aos-delay="200">
-                <img src="../images/ip/koukou/koukou.jpg" alt="玉扣纸精灵IP形象">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”100”>以玉扣纸为原型，融合畲族纹样，打造年轻化非遗IP</p>
+        <div class=”ip-character”>
+            <div class=”character-image” data-aos=”fade-right” data-aos-delay=”200”>
+                <img src=”../images/ip/koukou/koukou.jpg” alt=”玉扣纸精灵IP形象”>
             </div>
-            <div class="character-info" data-aos="fade-left" data-aos-delay="300">
+            <div class=”character-info” data-aos=”fade-left” data-aos-delay=”300”>
                 <h3>”扣扣” · 玉扣纸守护精灵</h3>
                 <p>设计灵感源自玉扣纸“温润如玉”的质感与畲族凤凰图腾。活泼可爱的形象，承载千年造纸智慧，适用于表情包、动画短片、文创衍生品等多元场景。</p>
                 <div class="character-tags">
@@ -94,66 +94,66 @@
     </div>
 
     <!-- 2. 衍生品设计展示 -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">🎨 衍生品设计 · 让IP走进生活</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🎨 衍生品设计 · 让IP走进生活</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">基于”扣扣”IP开发的系列产品，涵盖文具、家居、数字内容等</p>
-        <div class="derivative-grid">
-            <div class="derivative-card" data-aos="zoom-in" data-aos-delay="0">
-                <img src="../images/ip/表情包.png" alt="表情包">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”100”>基于”扣扣”IP开发的系列产品，涵盖文具、家居、数字内容等</p>
+        <div class=”derivative-grid”>
+            <div class=”derivative-card” data-aos=”zoom-in” data-aos-delay=”0”>
+                <img src=”../images/ip/表情包.png” alt=”表情包”>
                 <h3>表情包</h3>
                 <p>24款动态表情包，微信/QQ已上线，累计发送量超10万次</p>
-                <span class="derivative-tag">数字内容</span>
+                <span class=”derivative-tag”>数字内容</span>
             </div>
-            <div class="derivative-card" data-aos="zoom-in" data-aos-delay="100">
-                <img src="../images/ip/文创.png" alt="周边">
+            <div class=”derivative-card” data-aos=”zoom-in” data-aos-delay=”100”>
+                <img src=”../images/ip/文创.png” alt=”周边”>
                 <h3>周边产品</h3>
                 <p>笔记本、便签、书签，玉扣纸+IP联名设计</p>
-                <span class="derivative-tag">周边</span>
+                <span class=”derivative-tag”>周边</span>
             </div>
-            <div class="derivative-card" data-aos="zoom-in" data-aos-delay="200">
-                <img src="../images/ip/kits.jpg" alt="套装">
+            <div class=”derivative-card” data-aos=”zoom-in” data-aos-delay=”200”>
+                <img src=”../images/ip/kits.jpg” alt=”套装”>
                 <h3>文创套装</h3>
                 <p>内含笔记本、便签本、书签等实用文具，搭配 “翠倚风、倚松间、竹春归、雪映白” 四季主题 IP 插画</p>
-                <span class="derivative-tag">文创</span>
+                <span class=”derivative-tag”>文创</span>
             </div>
         </div>
     </div>
 
     <!-- 3. 品牌曝光与成功案例 -->
-    <div class="section">
-        <div class="section-header" data-aos="fade-up">
-            <h2 class="section-title">📢 品牌曝光 · 成功案例</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>📢 品牌曝光 · 成功案例</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">IP商业化成果与媒体合作</p>
-        <div class="case-showcase">
-            <div class="case-card" data-aos="flip-left" data-aos-delay="0">
-                <div class="case-icon"><i class="fas fa-newspaper"></i></div>
-                <div class="case-content">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”100”>IP商业化成果与媒体合作</p>
+        <div class=”case-showcase”>
+            <div class=”case-card” data-aos=”flip-left” data-aos-delay=”0”>
+                <div class=”case-icon”><i class=”fas fa-newspaper”></i></div>
+                <div class=”case-content”>
                     <h3>中青校园报道</h3>
                     <p>”三明学院：千年纸脉数字化，青春聚力续新篇”——专题报道IP孵化模式</p>
                 </div>
             </div>
-            <div class="case-card" data-aos="flip-left" data-aos-delay="100">
-                <div class="case-icon"><i class="fas fa-trophy"></i></div>
-                <div class="case-content">
+            <div class=”case-card” data-aos=”flip-left” data-aos-delay=”100”>
+                <div class=”case-icon”><i class=”fas fa-trophy”></i></div>
+                <div class=”case-content”>
                     <h3>国家级大创项目立项</h3>
                     <p>2025年国家级大学生创新训练计划立项，IP开发子课题获重点支持</p>
                 </div>
             </div>
-            <div class="case-card" data-aos="flip-left" data-aos-delay="200">
-                <div class="case-icon"><i class="fas fa-handshake"></i></div>
-                <div class="case-content">
+            <div class=”case-card” data-aos=”flip-left” data-aos-delay=”200”>
+                <div class=”case-icon”><i class=”fas fa-handshake”></i></div>
+                <div class=”case-content”>
                     <h3>品牌联名合作</h3>
                     <p>与”纸加”文创、福建非遗协会达成战略合作，联名产品销售额突破50万</p>
                 </div>
             </div>
-            <div class="case-card" data-aos="flip-left" data-aos-delay="300">
-                <div class="case-icon"><i class="fas fa-chart-simple"></i></div>
-                <div class="case-content">
+            <div class=”case-card” data-aos=”flip-left” data-aos-delay=”300”>
+                <div class=”case-icon”><i class=”fas fa-chart-simple”></i></div>
+                <div class=”case-content”>
                     <h3>新媒体曝光量</h3>
                     <p>抖音#玉扣纸IP 话题播放量超200万，小红书笔记3000+篇</p>
                 </div>
