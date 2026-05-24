@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/courses.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -59,20 +61,23 @@
 <!-- 静态 Banner（课程主题） -->
 <div class="banner-container">
     <div class="banner-bg" style="background-image: url('../images/education/courses/banner/courses.jpg');"></div>
-
+    <div class="banner-overlay" data-aos="fade-down" data-aos-delay="200">
+        <h1>在线课程 · 传承人培养</h1>
+        <p>从入门到专业，系统学习非遗技艺</p>
+    </div>
 </div>
 
 <!-- 主体内容区：仅包含课程相关模块（慕课、直播工坊、传承者计划） -->
 <div class="container">
     <!-- 1. 非遗慕课课程 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">📚 非遗慕课课程</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
         <div class="course-grid">
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="course-icon"><i class="fas fa-book-open"></i></div>
                 <h3>《玉扣纸历史与文化内涵》</h3>
                 <p class="teacher">讲师：胡铖（省级传承人）</p>
@@ -87,7 +92,7 @@
                 </div>
                 <a href="#" class="course-link">开始学习 <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="course-icon"><i class="fas fa-hands"></i></div>
                 <h3>《古法造纸工艺实操教学》</h3>
                 <p class="teacher">讲师：雷长天（高校教授）</p>
@@ -102,7 +107,7 @@
                 </div>
                 <a href="#" class="course-link">开始学习 <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="course-icon"><i class="fas fa-microscope"></i></div>
                 <h3>《玉扣纸与古籍修复研究》</h3>
                 <p class="teacher">讲师：牛津大学博德利图书馆专家</p>
@@ -122,12 +127,12 @@
 
     <!-- 2. 传承人直播工坊 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🎥 传承人直播工坊</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
-        <div class="live-card">
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
+        <div class="live-card" data-aos="fade-right" data-aos-delay="200">
             <div class="live-media">
                 <img src="../images/education/live-workshop.jpg" alt="直播工坊">
                 <div class="live-badge"><i class="fas fa-video"></i> 即将直播</div>
@@ -144,20 +149,20 @@
                 </div>
             </div>
         </div>
-        <div class="past-live">
+        <div class="past-live" data-aos="fade-up" data-aos-delay="300">
             <p><i class="fas fa-history"></i> 往期直播回顾：《竹料浸泡与纤维软化》 · 《焙纸温度与纸张质感关系》</p>
         </div>
     </div>
 
     <!-- 3. 非遗传承者计划 -->
-    <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">🌱 非遗传承者计划</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🌱 非遗传承者计划</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle">培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
-        <div class="plan-card">
-            <div class="plan-stats">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”100”>培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
+        <div class=”plan-card” data-aos=”zoom-in” data-aos-delay=”200”>
+            <div class="plan-stats" data-aos="flip-left" data-aos-delay="300">
                 <div class="stat-item">
                     <span class="stat-number">120+</span>
                     <span class="stat-label">课时学习</span>
@@ -171,7 +176,7 @@
                     <span class="stat-label">师徒带教</span>
                 </div>
             </div>
-            <div class="plan-details">
+            <div class="plan-details" data-aos="fade-left" data-aos-delay="400">
                 <p><i class="fas fa-handshake"></i> 合作机构：纸都治平馆、三明学院经济与管理学院</p>
                 <p><i class="fas fa-laptop-code"></i> 培养模式：“线上课程学习 + 线下工坊实践 + 传承人带教”三位一体</p>
                 <p><i class="fas fa-certificate"></i> 考核认证：完成120课时学习+30天实践，通过技艺考核可获《非遗传播者证书》</p>
@@ -185,7 +190,7 @@
 </div>
 
 <!-- 底部信息栏 -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="footer-container">
         <div class="footer-col">
             <h4>畲乡玉扣纸数字非遗平台</h4>
@@ -218,5 +223,15 @@
 </footer>
 
 <script src="../js/education.js"></script>
+<!-- AOS (Animate On Scroll) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

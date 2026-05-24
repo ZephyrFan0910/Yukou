@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/study.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -55,7 +56,7 @@
 </div>
 
 <!-- 静态 Banner（研学主题） -->
-<div class="banner-container">
+<div class="banner-container" data-aos="fade-down" data-aos-duration="1000">
     <div class="banner-bg" style="background-image: url('../images/education/study/banner/study.jpg');"></div>
 
 </div>
@@ -63,16 +64,16 @@
 <!-- 主体内容区：仅包含研学模块（路线+线下体验中心） -->
 <div class="container">
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🏕️ 线下研学实践 · 走进纸寮</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">走进古法纸寮，亲手触摸千年技艺，从原料到成纸完整体验玉扣纸魅力</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">走进古法纸寮，亲手触摸千年技艺，从原料到成纸完整体验玉扣纸魅力</p>
 
         <!-- 研学路线 1日 / 3日 -->
         <div class="study-routes">
             <!-- 1日研学路线 -->
-            <div class="route-card">
+            <div class="route-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="route-img">
                     <img src="../images/education/route-1day.jpg" alt="1日研学路线">
                 </div>
@@ -91,7 +92,7 @@
                 </div>
             </div>
             <!-- 3日研学路线 -->
-            <div class="route-card">
+            <div class="route-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="route-img">
                     <img src="../images/education/route-3day.jpg" alt="3日研学路线">
                 </div>
@@ -112,10 +113,10 @@
 
         <!-- 线下体验中心信息（悬浮动画） -->
         <div class="experience-center">
-            <div class="center-media">
+            <div class="center-media" data-aos="fade-right">
                 <img src="../images/education/纸都治平馆.jpg" alt="畲乡玉扣纸非遗传承体验中心">
             </div>
-            <div class="center-info">
+            <div class="center-info" data-aos="fade-left">
                 <h3><i class="fas fa-map-marker-alt"></i> 畲乡玉扣纸非遗传承体验中心</h3>
                 <p>地址：福建省三明市宁化县治平畲族乡茜坑村（胡铖纸寮旁）</p>
                 <p>规模：占地面积1200㎡，含展示区、体验区、教学区、传承人工作室</p>
@@ -131,19 +132,19 @@
 <!-- 底部信息栏 -->
 <footer class="footer">
     <div class="footer-container">
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="0">
             <h4>畲乡玉扣纸数字非遗平台</h4>
             <p>保护传承 · 文化自信 · 数字赋能</p>
             <p>我们致力于用数字技术守护非遗文化，让传统文化在新时代焕发新的生命力。</p>
         </div>
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
             <h4>平台服务</h4>
             <a href="#">帮助中心</a>
             <a href="cooperation.html">合作入驻</a>
             <a href="about.html">联系我们</a>
             <a href="#" id="fundTransparency">资金使用透明公示</a>
         </div>
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
             <h4>联系方式</h4>
             <p><i class="fas fa-phone-alt"></i> 电话：0598-1234567</p>
             <p><i class="fas fa-envelope"></i> 邮箱：contact@yukuzhi.com</p>
@@ -162,5 +163,14 @@
 </footer>
 
 <script src="../js/education.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

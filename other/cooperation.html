@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/cooperation.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -57,7 +59,7 @@
 </div>
 
 <!-- 静态 Banner -->
-<div class="banner-container">
+<div class="banner-container" data-aos="fade-down">
     <div class="banner-bg" style="background-image: url('../images/cooperation/banner/cooperation.jpg');"></div>
 
 </div>
@@ -65,26 +67,26 @@
 <!-- 主体内容区 -->
 <div class="container">
     <!-- 1. 平台简介 -->
-    <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">📖 平台简介</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>📖 平台简介</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <div class="intro-card">
-            <p>客家非遗数字电商平台致力于客家非遗文化的数字化保护与创新传播，提供<span class="highlight">“保护优先 · 文创反哺”</span>的可持续发展模式。平台现已入驻非遗传承人23位，数字化非遗项目12+，注册用户突破1.8万人。我们诚邀更多非遗传承人、文创机构、教育单位、文旅企业加入，共同打造非遗数字生态。</p>
+        <div class=”intro-card” data-aos=”fade-up” data-aos-delay=”100”>
+            <p>客家非遗数字电商平台致力于客家非遗文化的数字化保护与创新传播，提供<span class=”highlight”>”保护优先 · 文创反哺”</span>的可持续发展模式。平台现已入驻非遗传承人23位，数字化非遗项目12+，注册用户突破1.8万人。我们诚邀更多非遗传承人、文创机构、教育单位、文旅企业加入，共同打造非遗数字生态。</p>
         </div>
     </div>
 
     <!-- 2. 两大合作入口 -->
     <!-- 合作入口 - 内容丰富版（无新增板块） -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🤝 合作入口</h2>
             <div class="title-decoration"></div>
         </div>
         <div class="cooperation-grid">
             <!-- 机构合作卡片（内容大幅丰富） -->
-            <div class="coop-card">
+            <div class="coop-card" data-aos="fade-right" data-aos-delay="0">
                 <div class="coop-icon"><i class="fas fa-building"></i></div>
                 <h3>机构合作</h3>
                 <ul>
@@ -99,7 +101,7 @@
             </div>
 
             <!-- 传承人入驻卡片（内容大幅丰富） -->
-            <div class="coop-card">
+            <div class="coop-card" data-aos="fade-left" data-aos-delay="100">
                 <div class="coop-icon"><i class="fas fa-chalkboard-user"></i></div>
                 <h3>传承人入驻</h3>
                 <ul>
@@ -118,13 +120,13 @@
 
     <!-- 3. 合作流程 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">📋 合作流程</h2>
             <div class="title-decoration"></div>
         </div>
         <div class="process-wrap">
             <!-- 步骤1 -->
-            <div class="process-item">
+            <div class="process-item" data-aos="zoom-in" data-aos-delay="0">
                 <div class="process-img">
                     <img src="../images/cooperation/step1.png" alt="提交申请">
                 </div>
@@ -133,10 +135,10 @@
                     <p>填写合作意向表或直接联系平台</p>
                 </div>
             </div>
-            <div class="process-arrow"></div>
+            <div class="process-arrow" data-aos="fade-right" data-aos-delay="50"></div>
 
             <!-- 步骤2 -->
-            <div class="process-item">
+            <div class="process-item" data-aos="zoom-in" data-aos-delay="100">
                 <div class="process-img">
                     <img src="../images/cooperation/step2.png" alt="资源审核">
                 </div>
@@ -145,10 +147,10 @@
                     <p>平台审核资质与项目匹配度</p>
                 </div>
             </div>
-            <div class="process-arrow"></div>
+            <div class="process-arrow" data-aos="fade-right" data-aos-delay="150"></div>
 
             <!-- 步骤3 -->
-            <div class="process-item">
+            <div class="process-item" data-aos="zoom-in" data-aos-delay="200">
                 <div class="process-img">
                     <img src="../images/cooperation/step3.png" alt="洽谈合作">
                 </div>
@@ -157,10 +159,10 @@
                     <p>沟通合作模式、权益分配等细节</p>
                 </div>
             </div>
-            <div class="process-arrow"></div>
+            <div class="process-arrow" data-aos="fade-right" data-aos-delay="250"></div>
 
             <!-- 步骤4 -->
-            <div class="process-item">
+            <div class="process-item" data-aos="zoom-in" data-aos-delay="300">
                 <div class="process-img">
                     <img src="../images/cooperation/step4.png" alt="签约入驻">
                 </div>
@@ -169,10 +171,10 @@
                     <p>签署协议，正式入驻平台</p>
                 </div>
             </div>
-            <div class="process-arrow"></div>
+            <div class="process-arrow" data-aos="fade-right" data-aos-delay="350"></div>
 
             <!-- 步骤5 -->
-            <div class="process-item">
+            <div class="process-item" data-aos="zoom-in" data-aos-delay="400">
                 <div class="process-img">
                     <img src="../images/cooperation/step5.png" alt="运营支持">
                 </div>
@@ -241,5 +243,15 @@
 </footer>
 
 <script src="../js/cooperation.js"></script>
+<!-- AOS (Animate On Scroll) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

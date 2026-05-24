@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/about.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -57,7 +59,7 @@
 </div>
 
 <!-- 静态 Banner -->
-<div class="banner-container">
+<div class="banner-container" data-aos="fade-down">
     <div class="banner-bg" style="background-image: url('../images/about/banner/about.jpg');"></div>
 
 </div>
@@ -66,33 +68,33 @@
 <div class="container">
     <!-- 1. 项目背景与目标 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">📖 项目背景与目标</h2>
             <div class="title-decoration"></div>
         </div>
-        <div class="intro-card">
+        <div class="intro-card" data-aos="fade-up" data-aos-delay="100">
             <p>畲乡玉扣纸是福建省三明市宁化县千年传统手工竹纸技艺，以<span class="highlight">“色泽如玉、细腻柔嫩、经久不蛀”</span>闻名，最早可追溯至北宋时期，2007年被列为<span class="highlight">福建省省级非物质文化遗产</span>。历史上，玉扣纸曾畅销东南亚，被选作《毛泽东选集》（线装本）印刷用纸，2024年更被牛津大学博德利图书馆用于古籍善本《明福河陈心斋刻本》重印，文化价值获国际认可。</p>
             <p>然而，这项技艺当前面临<span class="highlight">传承断层（仅10位传承人，平均年龄60岁）、工艺濒危、市场认知度低（公众认知度仅12.3%）</span>等困境。为破解难题，我们团队打造“畲乡玉扣纸非遗技艺数字馆”，旨在通过数字技术实现“活态传承与文化重生”。</p>
-            <div class="goal-list">
-                <div class="goal-item">
-                    <i class="fas fa-save"></i>
+            <div class=”goal-list”>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”200”>
+                    <i class=”fas fa-save”></i>
                     <span>抢救性记录</span>
                     <p>系统化保存传承人技艺、历史文献、工艺细节</p>
                 </div>
-                <div class="goal-item">
-                    <i class="fas fa-rocket"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”300”>
+                    <i class=”fas fa-rocket”></i>
                     <span>创新性传播</span>
                     <p>通过VR/AR、游戏、慕课等形式吸引年轻群体</p>
                 </div>
-                <div class="goal-item">
-                    <i class="fas fa-seedling"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”400”>
+                    <i class=”fas fa-seedling”></i>
                     <span>可持续传承</span>
-                    <p>建立“数字馆+线下工坊+研学”生态，培养新一代传承人</p>
+                    <p>建立”数字馆+线下工坊+研学”生态，培养新一代传承人</p>
                 </div>
-                <div class="goal-item">
-                    <i class="fas fa-city"></i>
+                <div class=”goal-item” data-aos=”zoom-in” data-aos-delay=”500”>
+                    <i class=”fas fa-city”></i>
                     <span>文化赋能乡村</span>
-                    <p>助力宁化县“非遗+乡村振兴”战略，带动地方文化发展</p>
+                    <p>助力宁化县”非遗+乡村振兴”战略，带动地方文化发展</p>
                 </div>
             </div>
         </div>
@@ -100,13 +102,13 @@
 
     <!-- 2. 核心团队（5人并排） -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">👥 核心团队 · 星火队</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">5名大学生跨专业协作 · 用青春点亮非遗传承之光</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">5名大学生跨专业协作 · 用青春点亮非遗传承之光</p>
         <div class="team-grid">
-            <div class="team-card">
+            <div class="team-card" data-aos="fade-right" data-aos-delay="100">
                 <div class="team-photo">
                     <img src="../images/about/characters/张智发.jpg" alt="张智发">
                 </div>
@@ -115,7 +117,7 @@
                 <p class="team-major">物流管理专业</p>
                 <p class="team-desc">项目整体规划与协调</p>
             </div>
-            <div class="team-card">
+            <div class="team-card" data-aos="fade-right" data-aos-delay="200">
                 <div class="team-photo">
                     <img src="../images/about/characters/赵敏.jpg" alt="赵敏">
                 </div>
@@ -124,7 +126,7 @@
                 <p class="team-major">供应链管理专业</p>
                 <p class="team-desc">负责传承人采访与内容采集</p>
             </div>
-            <div class="team-card">
+            <div class="team-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="team-photo">
                     <img src="../images/about/characters/李颖卿.jpg" alt="李颖卿">
                 </div>
@@ -133,7 +135,7 @@
                 <p class="team-major">供应链管理专业</p>
                 <p class="team-desc">研学合作、文创设计</p>
             </div>
-            <div class="team-card">
+            <div class="team-card" data-aos="fade-left" data-aos-delay="400">
                 <div class="team-photo">
                     <img src="../images/about/characters/曾宇哲.jpg" alt="曾宇哲">
                 </div>
@@ -142,7 +144,7 @@
                 <p class="team-major">财务管理专业</p>
                 <p class="team-desc">与传承人、地方政府对接</p>
             </div>
-            <div class="team-card">
+            <div class="team-card" data-aos="fade-left" data-aos-delay="500">
                 <div class="team-photo">
                     <img src="../images/about/characters/范泽云.jpg" alt="范泽云">
                 </div>
@@ -156,12 +158,12 @@
 
     <!-- 3. 项目成果与进展 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🏆 项目成果与进展</h2>
             <div class="title-decoration"></div>
         </div>
         <div class="achievement-grid">
-            <div class="achievement-card">
+            <div class="achievement-card" data-aos="flip-left" data-aos-delay="100">
                 <div class="achievement-icon"><i class="fas fa-database"></i></div>
                 <h3>数字化成果</h3>
                 <ul>
@@ -171,7 +173,7 @@
                     <li>开发完成2款造纸模拟游戏demo</li>
                 </ul>
             </div>
-            <div class="achievement-card">
+            <div class="achievement-card" data-aos="flip-left" data-aos-delay="200">
                 <div class="achievement-icon"><i class="fas fa-handshake"></i></div>
                 <h3>合作资源</h3>
                 <ul>
@@ -181,7 +183,7 @@
                     <li>计划对接宁化县文旅局，纳入地方非遗推广计划</li>
                 </ul>
             </div>
-            <div class="achievement-card">
+            <div class="achievement-card" data-aos="flip-left" data-aos-delay="300">
                 <div class="achievement-icon"><i class="fas fa-award"></i></div>
                 <h3>大赛与荣誉</h3>
                 <ul>
@@ -197,11 +199,11 @@
 
     <!-- 4. 资金透明公示 & 联系方式 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">💰 资金透明 · 联系我们</h2>
             <div class="title-decoration"></div>
         </div>
-        <div class="contact-card">
+        <div class="contact-card" data-aos="zoom-in" data-aos-delay="100">
             <div class="contact-info">
                 <h3><i class="fas fa-chart-line"></i> 收益反哺非遗传承</h3>
                 <p>平台所有文创销售收入、IP授权收益、研学服务收入，按季度公示明细，并将利润的30%直接用于非遗传承人补助、工艺抢救记录、传承人培养计划。坚持公益与商业并行，让每一份支持都变成真正的文化守护力量。</p>
@@ -221,7 +223,7 @@
 </div>
 
 <!-- 底部信息栏 -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="footer-container">
         <div class="footer-col">
             <h4>畲乡玉扣纸数字非遗平台</h4>
@@ -254,5 +256,14 @@
 </footer>
 
 <script src="../js/about.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

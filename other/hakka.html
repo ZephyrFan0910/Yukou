@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/hakka.css">
+    <!-- AOS Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -57,7 +59,7 @@
 </div>
 
 <!-- 静态 Banner -->
-<div class="banner-container">
+<div class="banner-container" data-aos="fade-down">
     <div class="banner-bg" style="background-image: url('../images/archive/hakka/banner/hakka.jpg');"></div>
 
 </div>
@@ -66,14 +68,14 @@
 <div class="container">
     <!-- 1. 客家非遗项目展示 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🏮 客家非遗 · 匠心传承</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">平台欢迎更多客家非遗项目入驻，共建文化数字生态</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">平台欢迎更多客家非遗项目入驻，共建文化数字生态</p>
         <div class="hakka-grid">
             <!-- 客家蓝染 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/客家蓝染.jpg" alt="客家蓝染">
                 </div>
@@ -84,7 +86,7 @@
                 </div>
             </div>
             <!-- 围屋营造 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/围屋营造.jpg" alt="围屋营造">
                 </div>
@@ -95,7 +97,7 @@
                 </div>
             </div>
             <!-- 客家山歌 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="fade-right" data-aos-delay="200">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/客家山歌.jpg" alt="客家山歌">
                 </div>
@@ -106,7 +108,7 @@
                 </div>
             </div>
             <!-- 客家擂茶 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="fade-left" data-aos-delay="300">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/客家擂茶.jpg" alt="客家擂茶">
                 </div>
@@ -117,7 +119,7 @@
                 </div>
             </div>
             <!-- 客家木雕 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="zoom-in" data-aos-delay="400">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/客家木雕.jpg" alt="客家木雕">
                 </div>
@@ -128,7 +130,7 @@
                 </div>
             </div>
             <!-- 客家刺绣 -->
-            <div class="hakka-card">
+            <div class="hakka-card" data-aos="flip-left" data-aos-delay="500">
                 <div class="hakka-img">
                     <img src="../images/index/4.从玉扣纸出发%20·%20拓展客家非遗数字生态/客家刺绣.jpg" alt="客家刺绣">
                 </div>
@@ -143,11 +145,11 @@
 
     <!-- 2. 生态共建计划 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🌿 生态共建 · 邀您入驻</h2>
             <div class="title-decoration"></div>
         </div>
-        <div class="ecology-card">
+        <div class="ecology-card" data-aos="zoom-in" data-aos-delay="200">
             <div class="ecology-icon"><i class="fas fa-hand-holding-heart"></i></div>
             <div class="ecology-content">
                 <h3>非遗项目 / 传承人 / 机构入驻计划</h3>
@@ -198,5 +200,15 @@
 </footer>
 
 <script src="../js/hakka.js"></script>
+<!-- AOS Animate On Scroll -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

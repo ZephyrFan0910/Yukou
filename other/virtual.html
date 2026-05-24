@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/virtual.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -58,7 +60,7 @@
 
 <!-- 静态 Banner（单张背景图） -->
 <div class="banner-container">
-    <div class="banner-bg" style="background-image: url('../images/virtual/banner/virtual.jpg');"></div>
+    <div class="banner-bg" style="background-image: url('../images/virtual/banner/virtual.jpg');" data-aos="fade-down"></div>
 
 </div>
 
@@ -66,12 +68,12 @@
 <div class="container">
     <!-- 1. 工艺视频实拍体验 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🎬 工艺视频实拍体验</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">由省级传承人胡铖指导操作，完整演示古法造纸核心工序</p>
-        <div class="video-card">
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">由省级传承人胡铖指导操作，完整演示古法造纸核心工序</p>
+        <div class="video-card" data-aos="fade-up" data-aos-delay="100">
             <!-- 已修改：添加 autoplay muted loop playsinline 属性实现自动播放静音，同时保留 controls 以便用户控制 -->
             <video controls autoplay muted loop playsinline poster="images/virtual/video-poster.jpg">
                 <source src="../images/virtual/video-craft.mp4" type="video/mp4">
@@ -84,18 +86,18 @@
     </div>
 
     <!-- 2. VR/AR虚拟工坊 -->
-    <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">🥽 VR/AR虚拟工坊</h2>
-            <div class="title-decoration"></div>
+    <div class=”section”>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🥽 VR/AR虚拟工坊</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle">“化身匠人”沉浸式体验 · 还原清代纸寮场景</p>
-        <div class="vr-card">
-            <div class="vr-media">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”50”>”化身匠人”沉浸式体验 · 还原清代纸寮场景</p>
+        <div class=”vr-card” data-aos=”fade-right” data-aos-delay=”100”>
+            <div class="vr-media" data-aos="zoom-in" data-aos-delay="200">
                 <img src="../images/virtual/arvr-workshop.jpg" alt="VR虚拟工坊">
                 <div class="vr-badge"><i class="fas fa-vr-cardboard"></i> VR/AR体验</div>
             </div>
-            <div class="vr-info">
+            <div class="vr-info" data-aos="fade-left" data-aos-delay="300">
                 <h3>化身匠人 · 古法造纸沉浸式体验</h3>
                 <ul>
                     <li><i class="fas fa-cogs"></i> 技术支撑：Unity引擎 + ARCore/ARKit，支持移动端与VR设备</li>
@@ -112,13 +114,13 @@
 
     <!-- 3. 光影交互展 - 纸上的千年文明 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">✨ 光影交互展 · 纸上的千年文明</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">全息投影 + 触控交互，重现玉扣纸历史足迹</p>
-        <div class="light-card">
-            <div class="light-content">
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">全息投影 + 触控交互，重现玉扣纸历史足迹</p>
+        <div class="light-card" data-aos="fade-left" data-aos-delay="100">
+            <div class="light-content" data-aos="fade-up" data-aos-delay="200">
                 <h3>“玉扣纸的历史足迹”主题展</h3>
                 <ul>
                     <li><i class="fas fa-projector"></i> 技术形式：全息投影 + 触控交互，还原玉扣纸在不同历史时期的应用场景</li>
@@ -126,8 +128,8 @@
                     <li><i class="fas fa-hand-pointer"></i> 互动设计：观众触摸投影界面，可查看对应场景的历史背景与工艺细节</li>
                 </ul>
                 <div class="light-gallery">
-                    <img src="../images/virtual/光影展1.png" alt="光影展1">
-                    <img src="../images/virtual/光影展2.png" alt="光影展2">
+                    <img src="../images/virtual/光影展1.png" alt="光影展1" data-aos="flip-left" data-aos-delay="300">
+                    <img src="../images/virtual/光影展2.png" alt="光影展2" data-aos="flip-left" data-aos-delay="400">
                 </div>
             </div>
         </div>
@@ -137,19 +139,19 @@
 <!-- 底部信息栏 -->
 <footer class="footer">
     <div class="footer-container">
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="0">
             <h4>畲乡玉扣纸数字非遗平台</h4>
             <p>保护传承 · 文化自信 · 数字赋能</p>
             <p>我们致力于用数字技术守护非遗文化，让传统文化在新时代焕发新的生命力。</p>
         </div>
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
             <h4>平台服务</h4>
             <a href="#">帮助中心</a>
             <a href="about.html">合作入驻</a>
             <a href="about.html">联系我们</a>
             <a href="#" id="fundTransparency">资金使用透明公示</a>
         </div>
-        <div class="footer-col">
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
             <h4>联系方式</h4>
             <p><i class="fas fa-phone-alt"></i> 电话：0598-1234567</p>
             <p><i class="fas fa-envelope"></i> 邮箱：contact@yukuzhi.com</p>
@@ -168,5 +170,15 @@
 </footer>
 
 <script src="../js/virtual.js"></script>
+<!-- AOS (Animate On Scroll) -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>

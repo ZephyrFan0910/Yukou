@@ -9,6 +9,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/education.css">
+    <!-- AOS Animate On Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 <body>
 
@@ -39,7 +41,7 @@
 <!-- 静态 Banner -->
 <div class="banner-container">
     <div class="banner-bg" style="background-image: url('../images/education/banner/banner-education.jpg');"></div>
-    <div class="banner-text">
+    <div class="banner-text" data-aos="fade-down">
         <h1>云端教育平台</h1>
         <p>系统化教学 · 传承人直播 · 全民学非遗</p>
     </div>
@@ -49,13 +51,13 @@
 <div class="container">
     <!-- 1. 非遗慕课课程 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">📚 非遗慕课课程</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">针对不同群体设计分层课程，覆盖知识普及、工艺学习、文化研究</p>
         <div class="course-grid">
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="course-icon"><i class="fas fa-book-open"></i></div>
                 <h3>《玉扣纸历史与文化内涵》</h3>
                 <p class="teacher">讲师：胡铖（省级传承人）</p>
@@ -70,7 +72,7 @@
                 </div>
                 <a href="#" class="course-link">开始学习 <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="course-icon"><i class="fas fa-hands"></i></div>
                 <h3>《古法造纸工艺实操教学》</h3>
                 <p class="teacher">讲师：雷长天（高校教授）</p>
@@ -85,7 +87,7 @@
                 </div>
                 <a href="#" class="course-link">开始学习 <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="course-card">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="course-icon"><i class="fas fa-microscope"></i></div>
                 <h3>《玉扣纸与古籍修复研究》</h3>
                 <p class="teacher">讲师：牛津大学博德利图书馆专家</p>
@@ -105,12 +107,12 @@
 
     <!-- 2. 传承人直播工坊 -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🎥 传承人直播工坊</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
-        <div class="live-card">
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">实时演示 + 在线答疑 · 与非遗大师零距离互动</p>
+        <div class="live-card" data-aos="fade-right">
             <div class="live-media">
                 <img src="../images/education/live-workshop.jpg" alt="直播工坊">
                 <div class="live-badge"><i class="fas fa-video"></i> 即将直播</div>
@@ -127,19 +129,19 @@
                 </div>
             </div>
         </div>
-        <div class="past-live">
+        <div class="past-live" data-aos="fade-up" data-aos-delay="100">
             <p><i class="fas fa-history"></i> 往期直播回顾：《竹料浸泡与纤维软化》 · 《焙纸温度与纸张质感关系》</p>
         </div>
     </div>
 
     <!-- 3. 非遗传承者计划 -->
     <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">🌱 非遗传承者计划</h2>
-            <div class="title-decoration"></div>
+        <div class=”section-header” data-aos=”fade-up”>
+            <h2 class=”section-title”>🌱 非遗传承者计划</h2>
+            <div class=”title-decoration”></div>
         </div>
-        <p class="section-subtitle">培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
-        <div class="plan-card">
+        <p class=”section-subtitle” data-aos=”fade-up” data-aos-delay=”50”>培养新一代玉扣纸技艺传承人 · “线上+线下”三位一体模式</p>
+        <div class=”plan-card” data-aos=”zoom-in”>
             <div class="plan-stats">
                 <div class="stat-item">
                     <span class="stat-number">120+</span>
@@ -168,16 +170,16 @@
 
     <!-- 4. 线下研学服务（原 study.html 内容整合） -->
     <div class="section">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2 class="section-title">🏕️ 线下研学实践 · 行走的非遗课堂</h2>
             <div class="title-decoration"></div>
         </div>
-        <p class="section-subtitle">走进古法纸寮，亲手触摸千年技艺</p>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">走进古法纸寮，亲手触摸千年技艺</p>
 
         <!-- 研学路线 1日 / 3日 -->
         <div class="study-routes">
             <!-- 1日研学路线 -->
-            <div class="route-card">
+            <div class="route-card" data-aos="fade-up" data-aos-delay="0">
                 <div class="route-img">
                     <img src="../images/education/route-1day.jpg" alt="1日研学路线">
                 </div>
@@ -196,7 +198,7 @@
                 </div>
             </div>
             <!-- 3日研学路线 -->
-            <div class="route-card">
+            <div class="route-card" data-aos="fade-up" data-aos-delay="150">
                 <div class="route-img">
                     <img src="../images/education/route-3day.jpg" alt="3日研学路线">
                 </div>
@@ -216,7 +218,7 @@
         </div>
 
         <!-- 线下体验中心信息 -->
-        <div class="experience-center">
+        <div class="experience-center" data-aos="fade-left">
             <div class="center-media">
                 <img src="../images/education/纸都治平馆.jpg" alt="畲乡玉扣纸非遗传承体验中心">
             </div>
@@ -234,7 +236,7 @@
 </div>
 
 <!-- 底部信息栏 -->
-<footer class="footer">
+<footer class="footer" data-aos="fade-up">
     <div class="footer-container">
         <div class="footer-col">
             <h4>畲乡玉扣纸数字非遗平台</h4>
@@ -267,5 +269,15 @@
 </footer>
 
 <script src="../js/education.js"></script>
+<!-- AOS Animate On Scroll -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+</script>
 </body>
 </html>
