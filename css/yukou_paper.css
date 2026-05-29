@@ -268,8 +268,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-position: top center; /* 改成 top 更好看 */
-    background-size: 100% auto; /* ✅ 这一行是关键：横向100%完整显示 */
+    background-position: center center; /* 居中定位 */
+    background-size: cover; /* ✅ 采用 Cover 铺满居中：核心内容始终居中铺满，两端均衡裁剪，完美适配所有分辨率 */
     filter: brightness(0.75);
 }
 

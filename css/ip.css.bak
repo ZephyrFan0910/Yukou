@@ -1,4 +1,4 @@
-/* ========== 全局重置与变量（与 archive 一致） ========== */
+/* ========== 全局重置与变量 ========== */
 :root {
     --primary-dark: #0A3A1A;
     --primary-green: #1C5A2A;
@@ -56,7 +56,7 @@ body::before {
     pointer-events: none;
 }
 
-/* ========== 导航栏（完全复制自首页） ========== */
+/* ========== 导航栏 ========== */
 .nav {
     position: fixed;
     top: 0;
@@ -263,8 +263,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-position: center center; /* 居中定位 */
-    background-size: cover; /* ✅ 采用 Cover 铺满居中：核心内容始终居中铺满，两端均衡裁剪，完美适配所有分辨率 */
+    background-position: top center; /* 改成 top 更好看 */
+    background-size: 100% auto; /* ✅ 这一行是关键：横向100%完整显示 */
     filter: brightness(0.75);
 }
 
@@ -332,33 +332,8 @@ body::before {
     padding-left: 1rem;
 }
 
-/* ========== 视频卡片 ========== */
-.video-card {
-    background: white;
-    border-radius: var(--border-radius-card);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    transition: var(--transition);
-}
-.video-card video {
-    width: 100%;
-    display: block;
-    background: #000;
-}
-.video-caption {
-    padding: 1rem 1.5rem;
-    background: #f9f9f9;
-    font-size: 0.9rem;
-    color: var(--text-light);
-    border-top: 1px solid #eee;
-}
-.video-caption i {
-    color: var(--primary-green);
-    margin-right: 8px;
-}
-
-/* ========== VR/AR 卡片 ========== */
-.vr-card {
+/* ========== IP形象展示 ========== */
+.ip-character {
     background: white;
     border-radius: var(--border-radius-card);
     overflow: hidden;
@@ -367,122 +342,186 @@ body::before {
     flex-wrap: wrap;
     transition: var(--transition);
 }
-.vr-card:hover {
+.ip-character:hover {
     transform: translateY(-6px);
     box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
 }
-.vr-media {
-    flex: 1;
-    min-width: 280px;
-    position: relative;
+.character-image {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f0;
+    padding: 1rem;
+    border-radius: 30px;
 }
-.vr-media img {
+
+.character-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    height: auto;
+    max-width: none;
 }
-.vr-badge {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(4px);
-    padding: 0.4rem 1rem;
-    border-radius: 40px;
-    font-size: 0.8rem;
-    color: var(--accent-gold);
-}
-.vr-info {
+.character-info {
     flex: 1;
     padding: 2rem;
 }
-.vr-info h3 {
-    font-size: 1.5rem;
+.character-info h3 {
+    font-size: 1.8rem;
     color: var(--primary-dark);
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 }
-.vr-info ul {
-    list-style: none;
+.character-info p {
+    color: var(--text-light);
+    line-height: 1.6;
     margin-bottom: 1.5rem;
 }
-.vr-info li {
-    margin-bottom: 0.8rem;
+.character-tags {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
 }
-.vr-info li i {
-    color: var(--primary-green);
-    width: 22px;
-    margin-top: 2px;
+.character-tags span {
+    background: #f0f0f0;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
 }
-.demo-btn {
+.character-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.ip-btn, .ip-btn-outline {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--primary-dark);
-    color: white;
-    padding: 0.7rem 1.8rem;
+    padding: 0.7rem 1.5rem;
     border-radius: 40px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: var(--transition);
 }
-.demo-btn:hover {
+.ip-btn {
+    background: var(--primary-dark);
+    color: white;
+}
+.ip-btn:hover {
     background: var(--accent-gold);
     color: #162e24;
 }
+.ip-btn-outline {
+    border: 2px solid var(--primary-dark);
+    color: var(--primary-dark);
+}
+.ip-btn-outline:hover {
+    background: var(--primary-dark);
+    color: white;
+}
 
-/* ========== 光影交互展 ========== */
-.light-card {
+/* ========== 衍生品网格 ========== */
+.derivative-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+
+    margin: 0 auto;  /* 整体居中 */
+}
+
+.derivative-card {
+    flex: 0 1 360px;  /* 基础宽度360px，可伸缩但不超过 */
     background: white;
-    border-radius: var(--border-radius-card);
-    padding: 2rem;
+    border-radius: var(--border-radius-card, 20px);
+    overflow: hidden;
+    box-shadow: var(--card-shadow, 0 10px 20px rgba(0,0,0,0.05));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.derivative-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+}
+
+.derivative-card img {
+    width: 360px;
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.derivative-card:hover img {
+    transform: scale(1.03);
+}
+
+.derivative-card h3 {
+    font-size: 1.2rem;
+    margin: 1rem 1rem 0.5rem;
+    color: var(--primary-dark, #2c1810);
+}
+
+.derivative-card p {
+    font-size: 0.85rem;
+    color: var(--text-light, #666);
+    margin: 0 1rem 1rem;
+    line-height: 1.4;
+}
+
+.derivative-tag {
+    display: inline-block;
+    margin: 0 1rem 1rem;
+    background: rgba(212, 175, 55, 0.2);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: var(--primary-dark, #b8860b);
+}
+
+/* 移动端适配：小屏幕时单列显示 */
+@media (max-width: 800px) {
+    .derivative-grid {
+        gap: 1.5rem;
+    }
+    .derivative-card {
+        flex: 0 1 100%;
+        max-width: 400px;
+    }
+}
+
+/* ========== 成功案例卡片 ========== */
+.case-showcase {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.case-card {
+    background: white;
+    border-radius: 24px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
     box-shadow: var(--card-shadow);
     transition: var(--transition);
 }
-.light-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+.case-card:hover {
+    transform: translateY(-5px);
 }
-.light-content h3 {
-    font-size: 1.5rem;
+.case-icon {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    flex-shrink: 0;
+}
+.case-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
     color: var(--primary-dark);
-    margin-bottom: 1.2rem;
 }
-.light-content ul {
-    list-style: none;
-    margin-bottom: 2rem;
+.case-content p {
+    font-size: 0.85rem;
+    color: var(--text-light);
 }
-.light-content li {
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-.light-content li i {
-    color: var(--primary-green);
-    width: 22px;
-    margin-top: 2px;
-}
-.light-gallery {
-    display: flex;
-    gap: 1.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-}
-.light-gallery img {
-    width: calc(50% - 0.75rem);
-    border-radius: 20px;
-    object-fit: cover;
-    height: 350px;
-    transition: var(--transition);
-}
-.light-gallery img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
+
 
 /* ========== 页脚 ========== */
 .footer {
@@ -538,6 +577,11 @@ body::before {
 }
 
 /* ========== 响应式 ========== */
+@media (max-width: 1100px) {
+    .derivative-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 @media (max-width: 900px) {
     .container {
         padding: 2rem 1.5rem;
@@ -548,14 +592,11 @@ body::before {
     .banner-text p {
         font-size: 1rem;
     }
-    .vr-card {
-        flex-direction: column;
+    .case-showcase {
+        grid-template-columns: 1fr;
     }
-    .vr-media {
-        min-height: 260px;
-    }
-    .light-gallery img {
-        width: 100%;
+    .character-info h3 {
+        font-size: 1.4rem;
     }
 }
 @media (max-width: 680px) {
@@ -569,8 +610,22 @@ body::before {
     .section-title {
         font-size: 1.6rem;
     }
+    .derivative-grid {
+        grid-template-columns: 1fr;
+    }
+    .step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .character-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .ip-btn, .ip-btn-outline {
+        justify-content: center;
+    }
 }
-
 
 /* ========== 自定义鼠标箭头 ========== */
 /* 全局默认箭头：使用 arrow.png，并设置热点坐标（图片中心点） */
