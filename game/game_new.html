@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玉扣纸工坊 — 非遗造纸互动体验</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+  --paper: #f5ecd7;
+  --ink: #3e2723;
+  --wood: #8b6914;
+  --wood-dark: #5d4037;
+  --accent: #c62828;
+  --green: #2e7d32;
+  --water: #1565c0;
+  --gold: #bf9b30;
+}
+
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Noto Serif SC',serif;background:#1a1a1a}
+
+/* ===== 全局画布 ===== */
+#game{position:relative;width:100%;height:100%;overflow:hidden}
+
+/* ===== 场景通用 ===== */
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s,transform .6s;opacity:0;pointer-events:none;z-index:1}
+.scene.active{opacity:1;pointer-events:auto;transform:translateY(0)}
+.scene.exit-up{opacity:0;transform:translateY(-60px)}
+
+/* ===== 顶部进度条 ===== */
+#hud{position:fixed;top:0;left:0;right:0;height:48px;background:rgba(30,20,10,.85);backdrop-filter:blur(8px);z-index:100;display:flex;align-items:center;padding:0 20px;gap:16px;border-bottom:1px solid rgba(191,155,48,.3)}
+#hud .step-indicator{display:flex;gap:8px;align-items:center}
+#hud .dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .4s}
+#hud .dot.done{background:var(--gold);box-shadow:0 0 8px rgba(191,155,48,.6)}
+#hud .dot.current{background:#fff;box-shadow:0 0 12px rgba(255,255,255,.8);transform:scale(1.3)}
+#hud .step-label{color:rgba(255,255,255,.7);font-size:13px;margin-left:8px;font-family:'ZCOOL XiaoWei',serif}
+#hud .score-display{margin-left:auto;color:var(--gold);font-size:14px;font-family:'ZCOOL XiaoWei',serif}
+
+/* ===== 开场页 ===== */
+#scene-intro{background:linear-gradient(135deg,#2c1810 0%,#1a120b 100%)}
+#scene-intro .title-box{text-align:center;animation:fadeUp 1s ease-out}
+#scene-intro h1{font-family:'ZCOOL XiaoWei',serif;font-size:clamp(32px,6vw,64px);color:var(--paper);letter-spacing:8px;text-shadow:0 2px 20px rgba(191,155,48,.4)}
+#scene-intro .sub{color:rgba(245,236,215,.6);font-size:clamp(14px,2vw,18px);margin-top:12px;letter-spacing:4px}
+#scene-intro .desc{color:rgba(245,236,215,.4);font-size:13px;margin-top:30px;max-width:500px;line-height:1.8;text-align:center}
+#scene-intro .start-btn{margin-top:40px;padding:14px 48px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:16px;font-family:'ZCOOL XiaoWei',serif;cursor:pointer;letter-spacing:6px;transition:all .3s;border-radius:2px}
+#scene-intro .start-btn:hover{background:var(--gold);color:#1a120b;box-shadow:0 0 30px rgba(191,155,48,.3)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== 场景1：竹林选材 ===== */
+#scene-bamboo{background:linear-gradient(180deg,#87CEEB 0%,#5a8a3c 60%,#3d5a1e 100%)}
+.bamboo-stage{position:relative;width:min(900px,90vw);height:min(500px,60vh);margin-top:20px}
+.bamboo-tree{position:absolute;bottom:0;cursor:pointer;transition:transform .3s,filter .3s;display:flex;flex-direction:column;align-items:center}
+.bamboo-tree:hover{transform:scale(1.08)}
+.bamboo-tree.selected{filter:brightness(1.3) drop-shadow(0 0 15px rgba(255,255,255,.8))}
+.bamboo-tree.wrong{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.bamboo-trunk{width:12px;background:linear-gradient(90deg,#5a7d3b,#3b5a22,#5a7d3b);border-radius:3px;position:relative}
+.bamboo-trunk::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:repeating-linear-gradient(transparent 0px,transparent 28px,rgba(0,0,0,.15) 28px,rgba(0,0,0,.15) 30px)}
+.bamboo-leaf{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:18px solid #4a8c2a;position:absolute}
+.bamboo-tag {
+  position: absolute;
+  bottom: 45px; /* 让提示框浮在地面高度（40px）上方 */
+  left: 50%;
+  transform: translateX(-50%); /* 保证提示框在竹子上水平居中 */
+  padding: 3px 10px;
+  background: rgba(255,255,255,.9);
+  border-radius: 10px;
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  z-index: 10; /* 提高层级，确保不被地面或相邻树木遮挡 */
+}
+.bamboo-info{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.92);padding:8px 20px;border-radius:20px;font-size:13px;color:#333;box-shadow:0 2px 10px rgba(0,0,0,.15);white-space:nowrap;z-index:50}
+.ground{position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(0deg,#3d5a1e,#5a7d3b);border-radius:50% 50% 0 0 / 20px 20px 0 0}
+.feedback-float{position:absolute;padding:4px 12px;border-radius:12px;font-size:13px;font-weight:700;pointer-events:none;animation:floatAway 1.2s ease-out forwards;z-index:10}
+@keyframes floatAway{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(1.2)}}
+
+/* ===== 场景2：浸泡 ===== */
+#scene-soak{background:linear-gradient(180deg,#8d6e4a 0%,#5d4037 100%)}
+.soak-tub{position:relative;width:min(500px,80vw);height:min(300px,45vh);background:linear-gradient(180deg,#4e342e,#3e2723);border:4px solid #6d4c41;border-radius:0 0 40% 40%;overflow:hidden;margin:20px 0;box-shadow:inset 0 -20px 40px rgba(0,0,0,.3),0 8px 30px rgba(0,0,0,.4)}
+.water-surface{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,rgba(30,100,160,.7),rgba(20,60,100,.9));transition:height 1s ease;border-radius:0 0 38% 38%}
+.bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.2);animation:rise 2s ease-in infinite;pointer-events:none}
+@keyframes rise{0%{transform:translateY(0) scale(1);opacity:.6}100%{transform:translateY(-200px) scale(1.5);opacity:0}}
+.soak-progress-bar{width:min(400px,70vw);height:20px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin:10px 0}
+.soak-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#1565c0,#42a5f5);border-radius:10px;transition:width .3s}
+.soak-hint{color:rgba(245,236,215,.6);font-size:14px;margin-top:8px}
+
+/* ===== 场景3：踩料打浆 ===== */
+#scene-beat{background:linear-gradient(180deg,#6d4c41 0%,#4e342e 100%)}
+.beat-area{position:relative;width:min(600px,85vw);height:min(350px,50vh);background:linear-gradient(180deg,#5d4037,#3e2723);border:3px solid #8d6e63;border-radius:12px;overflow:hidden;margin:20px 0;cursor:crosshair}
+.beat-target{position:absolute;width:60px;height:60px;border-radius:50%;border:3px solid rgba(255,255,255,.3);background:rgba(255,255,255,.05);transform:translate(-50%,-50%);cursor:pointer;transition:all .15s}
+.beat-target:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.1)}
+.beat-target.hit{animation:hitFlash .3s}
+@keyframes hitFlash{0%{transform:translate(-50%,-50%) scale(1);background:rgba(76,175,80,.6)}50%{transform:translate(-50%,-50%) scale(1.3)}100%{transform:translate(-50%,-50%) scale(1);background:rgba(255,255,255,.05)}}
+.beat-ripple{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.4);animation:rippleOut .6s ease-out forwards;pointer-events:none}
+@keyframes rippleOut{0%{width:10px;height:10px;opacity:1}100%{width:80px;height:80px;opacity:0;margin:-40px 0 0 -40px}}
+.beat-score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:24px;font-weight:700;pointer-events:none;animation:scoreFloat .8s ease-out forwards}
+@keyframes scoreFloat{0%{opacity:1;transform:translate(-50%,-50%) scale(.8)}50%{opacity:1;transform:translate(-50%,-80%) scale(1.2)}100%{opacity:0;transform:translate(-50%,-120%) scale(1)}}
+
+/* ===== 场景4：荡料抄纸 ===== */
+#scene-scoop{background:linear-gradient(180deg,#4a6741 0%,#2e4a27 100%)}
+.scoop-container{position:relative;width:min(700px,90vw);height:min(400px,55vh);margin:20px 0}
+#scoopCanvas{width:100%;height:100%;border-radius:8px;cursor:none}
+.scoop-hint{color:rgba(245,236,215,.6);font-size:14px;margin-top:8px}
+.scoop-meter{display:flex;align-items:center;gap:12px;margin-top:6px;color:rgba(245,236,215,.7);font-size:13px}
+.scoop-bar{width:200px;height:12px;background:rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
+.scoop-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#66bb6a,#a5d6a7);border-radius:6px;transition:width .3s}
+
+/* ===== 场景5：揭纸焙干 ===== */
+#scene-dry{background:linear-gradient(180deg,#5d4037 0%,#3e2723 100%)}
+.dry-wall{position:relative;width:min(500px,80vw);height:min(400px,55vh);background:linear-gradient(180deg,#d7ccc8,#bcaaa4);border:3px solid #8d6e63;border-radius:8px;margin:20px 0;overflow:hidden}
+.paper-sheet{position:absolute;width:60%;height:50%;top:25%;left:20%;background:var(--paper);border-radius:2px;box-shadow:2px 2px 10px rgba(0,0,0,.2);cursor:grab;transition:opacity .5s;display:flex;align-items:center;justify-content:center}
+.paper-sheet:active{cursor:grabbing}
+.paper-sheet .watermark{font-family:'ZCOOL XiaoWei',serif;font-size:clamp(18px,3vw,28px);color:rgba(62,39,35,.15);letter-spacing:6px;user-select:none}
+.dry-progress{position:absolute;bottom:0;left:0;right:0;height:6px;background:rgba(0,0,0,.1)}
+.dry-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--gold),#f9a825);transition:width .3s}
+.heat-particle{position:absolute;width:4px;height:4px;background:rgba(255,152,0,.6);border-radius:50%;animation:heatRise 1.5s ease-out forwards;pointer-events:none}
+@keyframes heatRise{0%{opacity:.8;transform:translateY(0)}100%{opacity:0;transform:translateY(-60px) translateX(var(--drift))}}
+
+/* ===== 完成页 ===== */
+#scene-done{background:linear-gradient(135deg,#2c1810 0%,#1a120b 100%)}
+.done-card{text-align:center;animation:fadeUp .8s ease-out}
+.done-card h2{font-family:'ZCOOL XiaoWei',serif;font-size:clamp(28px,5vw,48px);color:var(--paper);margin-bottom:16px}
+.done-card .final-paper{width:clamp(180px,30vw,280px);height:clamp(240px,40vw,360px);background:var(--paper);margin:20px auto;border-radius:2px;box-shadow:4px 4px 20px rgba(0,0,0,.4),0 0 60px rgba(191,155,48,.15);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.done-card .final-paper .seal{font-family:'ZCOOL XiaoWei',serif;font-size:clamp(32px,5vw,52px);color:rgba(198,40,40,.2);letter-spacing:8px;transform:rotate(-5deg)}
+.done-card .stats{display:flex;gap:30px;justify-content:center;margin:20px 0}
+.done-card .stat{text-align:center}
+.done-card .stat .val{font-size:28px;color:var(--gold);font-weight:700}
+.done-card .stat .lbl{font-size:12px;color:rgba(245,236,215,.5);margin-top:4px}
+.done-card .grade{font-size:20px;color:var(--gold);font-family:'ZCOOL XiaoWei',serif;letter-spacing:4px;margin:15px 0}
+.done-card .replay{margin-top:20px;padding:12px 36px;background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:14px;font-family:'ZCOOL XiaoWei',serif;cursor:pointer;letter-spacing:4px;transition:all .3s}
+.done-card .replay:hover{background:var(--gold);color:#1a120b}
+
+/* ===== 通用文字 ===== */
+.scene-title{font-family:'ZCOOL XiaoWei',serif;font-size:clamp(22px,4vw,36px);color:var(--paper);text-shadow:0 2px 8px rgba(0,0,0,.5);letter-spacing:4px}
+.scene-subtitle{font-size:clamp(12px,1.8vw,15px);color:rgba(245,236,215,.5);margin-top:6px}
+</style>
+</head>
+<body>
+<div id="game">
+  <!-- HUD -->
+  <div id="hud" style="display:none">
+    <div class="step-indicator">
+      <div class="dot" data-step="0"></div>
+      <div class="dot" data-step="1"></div>
+      <div class="dot" data-step="2"></div>
+      <div class="dot" data-step="3"></div>
+      <div class="dot" data-step="4"></div>
+    </div>
+    <span class="step-label" id="stepLabel">竹林选材</span>
+    <span class="score-display">得分：<span id="totalScore">0</span></span>
+  </div>
+
+  <!-- 开场 -->
+  <div class="scene active" id="scene-intro">
+    <div class="title-box">
+      <h1>玉 扣 纸 坊</h1>
+      <div class="sub">畲乡非遗 · 数字造纸体验</div>
+      <div class="desc">从一根青檀到一张玉扣纸<br>历经选材、浸泡、踩料、抄纸、焙干五道工序<br>感受千年造纸技艺的温度</div>
+      <button class="start-btn" onclick="startGame()">开 始 体 验</button>
+    </div>
+  </div>
+
+  <!-- 场景1：竹林选材 -->
+  <div class="scene" id="scene-bamboo">
+    <div class="scene-title">第一道 · 竹林选材</div>
+    <div class="scene-subtitle">选择树龄3年以上、壁厚充足的青檀树</div>
+    <div class="bamboo-stage" id="bambooStage"><div class="bamboo-info" id="bambooInfo">点击青檀树查看详情</div></div>
+  </div>
+
+  <!-- 场景2：浸泡 -->
+  <div class="scene" id="scene-soak">
+    <div class="scene-title">第二道 · 浸泡软化</div>
+    <div class="scene-subtitle">青檀皮需在山泉水中浸泡数日，软化纤维</div>
+    <div class="soak-tub">
+      <div class="water-surface" id="waterSurface"></div>
+    </div>
+    <div class="soak-progress-bar"><div class="soak-progress-fill" id="soakFill"></div></div>
+    <div class="soak-hint">连续点击水面，搅动加速浸泡</div>
+  </div>
+
+  <!-- 场景3：踩料 -->
+  <div class="scene" id="scene-beat">
+    <div class="scene-title">第三道 · 踩料打浆</div>
+    <div class="scene-subtitle">将纤维踩踏分解为细腻纸浆</div>
+    <div class="beat-area" id="beatArea"></div>
+    <div class="soak-progress-bar"><div class="soak-progress-fill" id="beatFill"></div></div>
+    <div class="soak-hint" id="beatHint">点击闪烁的圆圈，精准踩踏纤维</div>
+  </div>
+
+  <!-- 场景4：荡料抄纸 -->
+  <div class="scene" id="scene-scoop">
+    <div class="scene-title">第四道 · 荡料抄纸</div>
+    <div class="scene-subtitle">竹帘入水，左右摇荡，让纸浆均匀铺展</div>
+    <div class="scoop-container">
+      <canvas id="scoopCanvas"></canvas>
+    </div>
+    <div class="scoop-meter">
+      <span>均匀度</span>
+      <div class="scoop-bar"><div class="scoop-bar-fill" id="scoopFill"></div></div>
+      <span id="scoopPct">0%</span>
+    </div>
+  </div>
+
+  <!-- 场景5：揭纸焙干 -->
+  <div class="scene" id="scene-dry">
+    <div class="scene-title">第五道 · 揭纸焙干</div>
+    <div class="scene-subtitle">将湿纸贴于焙墙，以文火慢慢烘干</div>
+    <div class="dry-wall" id="dryWall">
+      <div class="paper-sheet" id="paperSheet">
+        <span class="watermark">玉扣纸</span>
+        <div class="dry-progress"><div class="dry-progress-fill" id="dryFill"></div></div>
+      </div>
+    </div>
+    <div class="soak-hint">在焙墙上移动湿纸，使其均匀受热</div>
+  </div>
+
+  <!-- 完成 -->
+  <div class="scene" id="scene-done">
+    <div class="done-card">
+      <h2>一张玉扣纸，千年匠心意</h2>
+      <div class="final-paper"><span class="seal">玉扣</span></div>
+      <div class="grade" id="finalGrade"></div>
+      <div class="stats">
+        <div class="stat"><div class="val" id="finalScore">0</div><div class="lbl">总分</div></div>
+        <div class="stat"><div class="val" id="finalTime">0s</div><div class="lbl">用时</div></div>
+        <div class="stat"><div class="val" id="finalAccuracy">0%</div><div class="lbl">精准度</div></div>
+      </div>
+      <button class="replay" onclick="location.reload()">再 造 一 张</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== 全局状态 =====
+const S = { step:0, score:0, startTime:0, totalClicks:0, goodClicks:0 };
+const STEP_LABELS = ['竹林选材','浸泡软化','踩料打浆','荡料抄纸','揭纸焙干'];
+
+function updateHUD(){
+  document.querySelectorAll('#hud .dot').forEach((d,i)=>{
+    d.classList.toggle('done', i < S.step);
+    d.classList.toggle('current', i === S.step);
+  });
+  document.getElementById('stepLabel').textContent = STEP_LABELS[S.step] || '';
+  document.getElementById('totalScore').textContent = S.score;
+}
+
+function goTo(id){
+  document.querySelectorAll('.scene').forEach(s=>{s.classList.remove('active');s.classList.add('exit-up')});
+  const target = document.getElementById(id);
+  target.classList.remove('exit-up');
+  // Force reflow for transition
+  void target.offsetWidth;
+  target.classList.add('active');
+}
+
+function startGame(){
+  S.startTime = Date.now();
+  document.getElementById('hud').style.display = 'flex';
+  S.step = 0;
+  updateHUD();
+  goTo('scene-bamboo');
+  initBamboo();
+}
+
+// ===== 场景1：竹林选材 =====
+function initBamboo(){
+  const stage = document.getElementById('bambooStage');
+  // 保留 bamboo-info，只清除树
+  stage.querySelectorAll('.bamboo-tree,.ground').forEach(el=>el.remove());
+  const trees = [];
+  // Generate 8 trees with varying properties
+  for(let i=0;i<8;i++){
+    const age = Math.floor(Math.random()*6)+1; // 1-6 years
+    const thickness = (Math.random()*1.5+0.3).toFixed(1);
+    const isGood = age>=3 && parseFloat(thickness)>=0.8;
+    const h = 100 + age*30 + Math.random()*20;
+    const x = 8 + i*11.5 + (Math.random()-0.5)*3;
+    trees.push({age,thickness,isGood,h,x,idx:i});
+  }
+  // Ensure at least 2 good trees
+  let goodCount = trees.filter(t=>t.isGood).length;
+  while(goodCount<2){
+    const t = trees[Math.floor(Math.random()*trees.length)];
+    if(!t.isGood){t.age=3+Math.floor(Math.random()*4);t.thickness=(0.8+Math.random()*0.8).toFixed(1);t.isGood=true;t.h=100+t.age*30;goodCount++;}
+  }
+
+  trees.forEach(t=>{
+    const el = document.createElement('div');
+    el.className = 'bamboo-tree';
+    el.style.left = t.x+'%';
+    el.style.height = t.h+'px';
+    el.dataset.age = t.age;
+    el.dataset.thickness = t.thickness;
+    el.dataset.good = t.isGood;
+
+    // Trunk
+    const trunk = document.createElement('div');
+    trunk.className = 'bamboo-trunk';
+    trunk.style.height = t.h+'px';
+    el.appendChild(trunk);
+
+    // Leaves
+    for(let j=0;j<3;j++){
+      const leaf = document.createElement('div');
+      leaf.className = 'bamboo-leaf';
+      leaf.style.top = (j*30+10)+'px';
+      leaf.style.left = (j%2===0?'-10px':'14px');
+      if(j%2===1) leaf.style.transform = 'scaleX(-1)';
+      el.appendChild(leaf);
+    }
+
+    // Tag
+    const tag = document.createElement('div');
+    tag.className = 'bamboo-tag';
+    tag.textContent = t.age+'年 · '+t.thickness+'cm';
+    el.appendChild(tag);
+
+    el.addEventListener('click',()=>selectBamboo(el,t));
+    stage.appendChild(el);
+  });
+
+  // Ground
+  const ground = document.createElement('div');
+  ground.className = 'ground';
+  stage.appendChild(ground);
+}
+
+function selectBamboo(el, t){
+  S.totalClicks++;
+  if(t.isGood){
+    S.goodClicks++;
+    el.classList.add('selected');
+    S.score += 100;
+    updateHUD();
+    floatFeedback(el, '✓ 选材正确 +100', '#4caf50');
+    document.getElementById('bambooInfo').textContent = `选中：${t.age}年青檀，壁厚${t.thickness}cm — 纤维饱满，品质上佳`;
+    setTimeout(()=>{S.step=1;updateHUD();goTo('scene-soak');initSoak()},1200);
+  }else{
+    el.classList.add('wrong');
+    setTimeout(()=>el.classList.remove('wrong'),400);
+    const reason = t.age<3?'树龄不足':'壁厚不够';
+    floatFeedback(el, '✗ '+reason, '#e53935');
+    document.getElementById('bambooInfo').textContent = `${reason}！请选择树龄≥3年、壁厚≥0.8cm的青檀`;
+  }
+}
+
+function floatFeedback(parent, text, color){
+  const fb = document.createElement('div');
+  fb.className = 'feedback-float';
+  fb.textContent = text;
+  fb.style.color = color;
+  fb.style.background = 'rgba(255,255,255,.9)';
+  fb.style.left = '50%';
+  fb.style.top = '0';
+  fb.style.transform = 'translateX(-50%)';
+  parent.appendChild(fb);
+  setTimeout(()=>fb.remove(),1200);
+}
+
+// ===== 场景2：浸泡 =====
+let soakProgress = 0;
+function initSoak(){
+  soakProgress = 0;
+  const water = document.getElementById('waterSurface');
+  water.style.height = '30%';
+  document.getElementById('soakFill').style.width = '0%';
+  // Create initial bubbles
+  createBubbles();
+  // Click handler
+  const tub = document.querySelector('.soak-tub');
+  tub.onclick = (e)=>{
+    if(soakProgress>=100) return;
+    soakProgress = Math.min(100, soakProgress + 15 + Math.floor(Math.random()*5));
+    water.style.height = (30 + soakProgress*0.5)+'%';
+    document.getElementById('soakFill').style.width = soakProgress+'%';
+    // Bubble effect at click
+    createClickBubble(e, tub);
+    S.score += 2;
+    updateHUD();
+    if(soakProgress>=100){
+      S.score += 50;
+      updateHUD();
+      setTimeout(()=>{S.step=2;updateHUD();goTo('scene-beat');initBeat()},600);
+    }
+  };
+}
+
+function createBubbles(){
+  const tub = document.querySelector('.soak-tub');
+  setInterval(()=>{
+    if(S.step!==1) return;
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    const size = 4+Math.random()*10;
+    b.style.width = size+'px';
+    b.style.height = size+'px';
+    b.style.left = Math.random()*100+'%';
+    b.style.bottom = '0';
+    b.style.animationDuration = (1.5+Math.random()*1.5)+'s';
+    tub.appendChild(b);
+    setTimeout(()=>b.remove(),3000);
+  },300);
+}
+
+function createClickBubble(e, container){
+  const rect = container.getBoundingClientRect();
+  for(let i=0;i<3;i++){
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.style.width = b.style.height = (6+Math.random()*8)+'px';
+    b.style.left = (e.clientX - rect.left + (Math.random()-0.5)*30)+'px';
+    b.style.top = (e.clientY - rect.top)+'px';
+    b.style.animationDuration = (0.8+Math.random())+'s';
+    container.appendChild(b);
+    setTimeout(()=>b.remove(),2000);
+  }
+}
+
+// ===== 场景3：踩料 =====
+let beatProgress = 0, beatTimer = null;
+function initBeat(){
+  beatProgress = 0;
+  document.getElementById('beatFill').style.width = '0%';
+  const area = document.getElementById('beatArea');
+  area.innerHTML = '';
+  spawnBeatTarget();
+}
+
+function spawnBeatTarget(){
+  if(beatProgress>=100) return;
+  const area = document.getElementById('beatArea');
+  const target = document.createElement('div');
+  target.className = 'beat-target';
+  target.style.left = (15+Math.random()*70)+'%';
+  target.style.top = (15+Math.random()*70)+'%';
+  target.addEventListener('click',(e)=>{
+    e.stopPropagation();
+    S.totalClicks++;
+    S.goodClicks++;
+    target.classList.add('hit');
+    const pts = 8+Math.floor(Math.random()*5);
+    beatProgress = Math.min(100, beatProgress + pts * 2);
+    S.score += pts;
+    updateHUD();
+    document.getElementById('beatFill').style.width = beatProgress+'%';
+    // Ripple
+    const ripple = document.createElement('div');
+    ripple.className = 'beat-ripple';
+    ripple.style.left = target.style.left;
+    ripple.style.top = target.style.top;
+    area.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),600);
+    // Score float
+    const sf = document.createElement('div');
+    sf.className = 'beat-score-text';
+    sf.textContent = '+'+pts;
+    sf.style.left = target.style.left;
+    sf.style.top = target.style.top;
+    sf.style.color = '#a5d6a7';
+    area.appendChild(sf);
+    setTimeout(()=>sf.remove(),800);
+    target.remove();
+    if(beatProgress>=100){
+      S.score += 50;
+      updateHUD();
+      document.getElementById('beatHint').textContent = '踩料完成！纸浆细腻均匀';
+      setTimeout(()=>{S.step=3;updateHUD();goTo('scene-scoop');initScoop()},800);
+    }else{
+      setTimeout(spawnBeatTarget, 300+Math.random()*400);
+    }
+  });
+  area.appendChild(target);
+  // Auto-remove after 2s if not clicked
+  setTimeout(()=>{
+    if(target.parentElement){
+      target.style.opacity = '0.3';
+      setTimeout(()=>{target.remove();spawnBeatTarget()},200);
+    }
+  },1200);
+}
+
+// ===== 场景4：荡料抄纸 =====
+let scoopUniformity = 0;
+function initScoop(){
+  scoopUniformity = 0;
+  const canvas = document.getElementById('scoopCanvas');
+  const container = canvas.parentElement;
+  canvas.width = container.clientWidth;
+  canvas.height = container.clientHeight;
+  const ctx = canvas.getContext('2d');
+  // Grid of coverage
+  const cols = 30, rows = 20;
+  const cellW = canvas.width/cols, cellH = canvas.height/rows;
+  const grid = Array.from({length:rows},()=>Array(cols).fill(0));
+  let isDrawing = false;
+  let lastX = 0, lastY = 0;
+
+  // Draw water background
+  function drawBg(){
+    ctx.fillStyle = '#1a3a2a';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    // Water ripple effect
+    for(let i=0;i<5;i++){
+      ctx.strokeStyle = 'rgba(255,255,255,.03)';
+      ctx.beginPath();
+      ctx.arc(canvas.width/2, canvas.height/2, 50+i*40, 0, Math.PI*2);
+      ctx.stroke();
+    }
+  }
+  drawBg();
+
+  function getPos(e){
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    return {x: touch.clientX - rect.left, y: touch.clientY - rect.top};
+  }
+
+  function handleMove(px,py){
+    const col = Math.floor(px/cellW), row = Math.floor(py/cellH);
+    const brushR = 3;
+    for(let dr=-brushR;dr<=brushR;dr++){
+      for(let dc=-brushR;dc<=brushR;dc++){
+        const r = row+dr, c = col+dc;
+        if(r>=0&&r<rows&&c>=0&&c<cols){
+          const dist = Math.sqrt(dr*dr+dc*dc);
+          if(dist<=brushR){
+            grid[r][c] = Math.min(1, grid[r][c] + 0.08*(1-dist/brushR));
+          }
+        }
+      }
+    }
+    // Draw pulp
+    for(let r=0;r<rows;r++){
+      for(let c=0;c<cols;c++){
+        if(grid[r][c]>0){
+          const alpha = grid[r][c];
+          ctx.fillStyle = `rgba(210,190,160,${alpha*0.8})`;
+          ctx.fillRect(c*cellW, r*cellH, cellW, cellH);
+        }
+      }
+    }
+    // Cursor trail
+    ctx.beginPath();
+    ctx.arc(px, py, 12, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(139,105,20,.15)';
+    ctx.fill();
+
+    // Update uniformity
+    let covered = 0, total = rows*cols;
+    for(let r=0;r<rows;r++) for(let c=0;c<cols;c++) if(grid[r][c]>0.3) covered++;
+    scoopUniformity = Math.round(covered/total*100);
+    document.getElementById('scoopFill').style.width = scoopUniformity+'%';
+    document.getElementById('scoopPct').textContent = scoopUniformity+'%';
+    S.score = Math.max(S.score, S.score);
+    updateHUD();
+
+    if(scoopUniformity>=65){
+      S.score += 100;
+      updateHUD();
+      setTimeout(()=>{S.step=4;updateHUD();goTo('scene-dry');initDry()},600);
+    }
+  }
+
+  canvas.addEventListener('mousedown',e=>{isDrawing=true;const p=getPos(e);lastX=p.x;lastY=p.y});
+  canvas.addEventListener('mousemove',e=>{if(!isDrawing)return;const p=getPos(e);handleMove(p.x,p.y);lastX=p.x;lastY=p.y});
+  canvas.addEventListener('mouseup',()=>isDrawing=false);
+  canvas.addEventListener('mouseleave',()=>isDrawing=false);
+  canvas.addEventListener('touchstart',e=>{e.preventDefault();isDrawing=true;const p=getPos(e);lastX=p.x;lastY=p.y},{passive:false});
+  canvas.addEventListener('touchmove',e=>{e.preventDefault();if(!isDrawing)return;const p=getPos(e);handleMove(p.x,p.y);lastX=p.x;lastY=p.y},{passive:false});
+  canvas.addEventListener('touchend',()=>isDrawing=false);
+
+  document.getElementById('scoopFill').style.width = '0%';
+  document.getElementById('scoopPct').textContent = '0%';
+}
+
+// ===== 场景5：揭纸焙干 =====
+let dryProgress = 0;
+function initDry(){
+  dryProgress = 0;
+  document.getElementById('dryFill').style.width = '0%';
+  const wall = document.getElementById('dryWall');
+  const paper = document.getElementById('paperSheet');
+  let isDragging = false;
+  let heatInterval;
+
+  function getPos(e){
+    const rect = wall.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    return {x: touch.clientX - rect.left, y: touch.clientY - rect.top};
+  }
+
+  function spawnHeat(x,y){
+    const p = document.createElement('div');
+    p.className = 'heat-particle';
+    p.style.left = x+'px';
+    p.style.top = y+'px';
+    p.style.setProperty('--drift', (Math.random()-0.5)*30+'px');
+    wall.appendChild(p);
+    setTimeout(()=>p.remove(),1500);
+  }
+
+  paper.addEventListener('mousedown',()=>isDragging=true);
+  paper.addEventListener('touchstart',()=>isDragging=true,{passive:true});
+  wall.addEventListener('mousemove',e=>{
+    if(!isDragging||dryProgress>=100) return;
+    const p = getPos(e);
+    dryProgress = Math.min(100, dryProgress + 2);
+    document.getElementById('dryFill').style.width = dryProgress+'%';
+    if(Math.random()>.6) spawnHeat(p.x, p.y-20);
+    S.score += 1;
+    updateHUD();
+    if(dryProgress>=100){
+      isDragging = false;
+      paper.style.opacity = '0';
+      setTimeout(()=>{
+        S.score += 80;
+        updateHUD();
+        showDone();
+      },600);
+    }
+  });
+  wall.addEventListener('mouseup',()=>isDragging=false);
+  wall.addEventListener('touchend',()=>isDragging=false);
+  // Touch move on paper
+  paper.addEventListener('touchmove',e=>{
+    if(!isDragging||dryProgress>=100) return;
+    const p = getPos(e);
+    dryProgress = Math.min(100, dryProgress + 2);
+    document.getElementById('dryFill').style.width = dryProgress+'%';
+    if(Math.random()>.6) spawnHeat(p.x, p.y-20);
+    S.score += 1;
+    updateHUD();
+    if(dryProgress>=100){
+      isDragging = false;
+      paper.style.opacity = '0';
+      setTimeout(()=>{
+        S.score += 80;
+        updateHUD();
+        showDone();
+      },600);
+    }
+  },{passive:true});
+}
+
+// ===== 完成页 =====
+function showDone(){
+  S.step = 5;
+  updateHUD();
+  goTo('scene-done');
+  const elapsed = Math.round((Date.now()-S.startTime)/1000);
+  const accuracy = S.totalClicks>0 ? Math.round(S.goodClicks/S.totalClicks*100) : 100;
+  document.getElementById('finalScore').textContent = S.score;
+  document.getElementById('finalTime').textContent = elapsed+'s';
+  document.getElementById('finalAccuracy').textContent = accuracy+'%';
+  let grade = '学徒级';
+  if(S.score>=500) grade = '大师级 · 玉扣传人';
+  else if(S.score>=400) grade = '匠师级 · 技艺精湛';
+  else if(S.score>=300) grade = '熟手级 · 渐入佳境';
+  else if(S.score>=200) grade = '学徒级 · 初窥门径';
+  else grade = '入门级 · 继续努力';
+  document.getElementById('finalGrade').textContent = grade;
+  // Hide HUD
+  setTimeout(()=>{document.getElementById('hud').style.display='none'},500);
+}
+</script>
+</body>
+</html>
