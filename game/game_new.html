@@ -443,7 +443,7 @@ function spawnBeatTarget(){
     S.goodClicks++;
     target.classList.add('hit');
     const pts = 8+Math.floor(Math.random()*5);
-    beatProgress = Math.min(100, beatProgress + pts * 2);
+    beatProgress = Math.min(100, beatProgress + pts * 4);
     S.score += pts;
     updateHUD();
     document.getElementById('beatFill').style.width = beatProgress+'%';
@@ -470,17 +470,17 @@ function spawnBeatTarget(){
       document.getElementById('beatHint').textContent = '踩料完成！纸浆细腻均匀';
       setTimeout(()=>{S.step=3;updateHUD();goTo('scene-scoop');initScoop()},800);
     }else{
-      setTimeout(spawnBeatTarget, 300+Math.random()*400);
+      setTimeout(spawnBeatTarget, 200+Math.random()*200);
     }
   });
   area.appendChild(target);
-  // Auto-remove after 2s if not clicked
+  // Auto-remove if not clicked
   setTimeout(()=>{
     if(target.parentElement){
       target.style.opacity = '0.3';
       setTimeout(()=>{target.remove();spawnBeatTarget()},200);
     }
-  },1200);
+  },800);
 }
 
 // ===== 场景4：荡料抄纸 =====
@@ -521,14 +521,14 @@ function initScoop(){
 
   function handleMove(px,py){
     const col = Math.floor(px/cellW), row = Math.floor(py/cellH);
-    const brushR = 3;
+    const brushR = 5;
     for(let dr=-brushR;dr<=brushR;dr++){
       for(let dc=-brushR;dc<=brushR;dc++){
         const r = row+dr, c = col+dc;
         if(r>=0&&r<rows&&c>=0&&c<cols){
           const dist = Math.sqrt(dr*dr+dc*dc);
           if(dist<=brushR){
-            grid[r][c] = Math.min(1, grid[r][c] + 0.08*(1-dist/brushR));
+            grid[r][c] = Math.min(1, grid[r][c] + 0.15*(1-dist/brushR));
           }
         }
       }
@@ -558,7 +558,7 @@ function initScoop(){
     S.score = Math.max(S.score, S.score);
     updateHUD();
 
-    if(scoopUniformity>=65){
+    if(scoopUniformity>=55){
       S.score += 100;
       updateHUD();
       setTimeout(()=>{S.step=4;updateHUD();goTo('scene-dry');initDry()},600);
@@ -608,7 +608,7 @@ function initDry(){
   wall.addEventListener('mousemove',e=>{
     if(!isDragging||dryProgress>=100) return;
     const p = getPos(e);
-    dryProgress = Math.min(100, dryProgress + 2);
+    dryProgress = Math.min(100, dryProgress + 3);
     document.getElementById('dryFill').style.width = dryProgress+'%';
     if(Math.random()>.6) spawnHeat(p.x, p.y-20);
     S.score += 1;
@@ -629,7 +629,7 @@ function initDry(){
   paper.addEventListener('touchmove',e=>{
     if(!isDragging||dryProgress>=100) return;
     const p = getPos(e);
-    dryProgress = Math.min(100, dryProgress + 2);
+    dryProgress = Math.min(100, dryProgress + 3);
     document.getElementById('dryFill').style.width = dryProgress+'%';
     if(Math.random()>.6) spawnHeat(p.x, p.y-20);
     S.score += 1;
